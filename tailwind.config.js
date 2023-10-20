@@ -14,7 +14,7 @@ export default {
       h2: "1.563rem",
       h3: "1.25rem",
       h4: "1rem",
-      h5: "0.8rem",
+      h5: "0.85rem",
     },
     fontWeight: {
       normal: "400",

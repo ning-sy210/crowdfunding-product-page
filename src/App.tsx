@@ -3,22 +3,22 @@ const App = () => {
     <div>
       <img src="./images/image-hero-mobile.jpg" />
 
-      <div className="absolute top-0 overflow-y-auto">
-        <header className="flex items-center justify-between px-6 py-5 text-white">
+      <div className="absolute top-0 px-6 flex flex-col gap-y-[164px]">
+        <header className="flex items-center justify-between py-5 text-white">
           <h1 className="font-bold text-h2">crowdfund</h1>
           <img src="./images/icon-hamburger.svg"></img>
         </header>
         <main>
-          <section>
-            <img />
-            <h2>Mastercraft Bamboo Monitor Riser</h2>
-            <p>
+          <section className="relative flex flex-col gap-y-5 items-center text-center pt-[50px] px-6 pb-10 bg-white rounded-lg border-[1px] border-slate-200">
+            <img src="./images/logo-mastercraft.svg" className="absolute top-[-28px]"/>
+            <h2 className="text-h3 font-bold px-4 leading-6">Mastercraft Bamboo Monitor Riser</h2>
+            <p className="text-h5 leading-6 text-neutral-2">
               A beautifully handcrafted monitor stand to reduce neck and eye
               strain.
             </p>
-            <div>
-              <button>Back this project</button>
-              <button></button>
+            <div className="flex justify-between w-full">
+              <button className="px-11 rounded-full bg-primary-1 text-white font-medium ">Back this project</button>
+              <button><img src="./images/icon-bookmark.svg" /></button>
             </div>
           </section>
 
