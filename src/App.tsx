@@ -15,7 +15,7 @@ const App = () => {
               title="mastercraft logo"
               className="absolute top-[-28px]"
             />
-            <h2 className="px-4 font-bold leading-6 text-h3">
+            <h2 className="px-1 font-bold leading-6 text-h3">
               Mastercraft Bamboo Monitor Riser
             </h2>
             <p className="leading-6 text-h5 text-neutral-2">
@@ -25,7 +25,7 @@ const App = () => {
             <div className="flex justify-between w-full">
               <button
                 type="button"
-                className="font-medium text-white rounded-full px-11 bg-primary-1 "
+                className="font-medium text-white rounded-full w-[77%] bg-primary-1 "
               >
                 Back this project
               </button>
