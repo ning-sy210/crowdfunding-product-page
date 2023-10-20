@@ -1,17 +1,18 @@
 const App = () => {
   return (
     <div>
-      <img src="./images/image-hero-mobile.jpg" />
+      <img src="./images/image-hero-mobile.jpg" title="mobile hero image" />
 
       <div className="absolute top-0 px-6 flex flex-col gap-y-[164px]">
         <header className="flex items-center justify-between py-5 text-white">
           <h1 className="font-bold text-h2">crowdfund</h1>
-          <img src="./images/icon-hamburger.svg"></img>
+          <img src="./images/icon-hamburger.svg" title="hamburger icon"></img>
         </header>
         <main>
           <section className="relative flex flex-col gap-y-5 items-center text-center pt-[50px] px-6 pb-10 bg-white rounded-lg border-[1px] border-slate-200">
             <img
               src="./images/logo-mastercraft.svg"
+              title="mastercraft logo"
               className="absolute top-[-28px]"
             />
             <h2 className="px-4 font-bold leading-6 text-h3">
@@ -22,11 +23,14 @@ const App = () => {
               strain.
             </p>
             <div className="flex justify-between w-full">
-              <button className="font-medium text-white rounded-full px-11 bg-primary-1 ">
+              <button
+                type="button"
+                className="font-medium text-white rounded-full px-11 bg-primary-1 "
+              >
                 Back this project
               </button>
-              <button>
-                <img src="./images/icon-bookmark.svg" />
+              <button type="button">
+                <img src="./images/icon-bookmark.svg" title="bookmark icon" />
               </button>
             </div>
           </section>
