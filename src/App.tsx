@@ -1,12 +1,12 @@
 const App = () => {
   return (
     <div>
-      <img />
+      <img src="./images/image-hero-mobile.jpg" />
 
-      <div>
-        <header>
-          <h1>crowdfund</h1>
-          <span></span>
+      <div className="absolute top-0 overflow-y-auto">
+        <header className="flex items-center justify-between px-6 py-5 text-white">
+          <h1 className="font-bold text-h2">crowdfund</h1>
+          <img src="./images/icon-hamburger.svg"></img>
         </header>
         <main>
           <section>
