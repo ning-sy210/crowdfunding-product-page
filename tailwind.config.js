@@ -9,6 +9,18 @@ export default {
     fontFamily: {
       sans: ["Commissioner", "sans-serif"],
     },
+    fontSize: {
+      h1: "1.953rem",
+      h2: "1.563rem",
+      h3: "1.25rem",
+      h4: "1rem",
+      h5: "0.8rem",
+    },
+    fontWeight: {
+      normal: "400",
+      medium: "500",
+      bold: "700",
+    },
     extend: {
       colors: {
         "primary-1": "hsl(176, 50%, 47%)",
