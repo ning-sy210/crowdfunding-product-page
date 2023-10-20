@@ -10,15 +10,24 @@ const App = () => {
         </header>
         <main>
           <section className="relative flex flex-col gap-y-5 items-center text-center pt-[50px] px-6 pb-10 bg-white rounded-lg border-[1px] border-slate-200">
-            <img src="./images/logo-mastercraft.svg" className="absolute top-[-28px]"/>
-            <h2 className="text-h3 font-bold px-4 leading-6">Mastercraft Bamboo Monitor Riser</h2>
-            <p className="text-h5 leading-6 text-neutral-2">
+            <img
+              src="./images/logo-mastercraft.svg"
+              className="absolute top-[-28px]"
+            />
+            <h2 className="px-4 font-bold leading-6 text-h3">
+              Mastercraft Bamboo Monitor Riser
+            </h2>
+            <p className="leading-6 text-h5 text-neutral-2">
               A beautifully handcrafted monitor stand to reduce neck and eye
               strain.
             </p>
             <div className="flex justify-between w-full">
-              <button className="px-11 rounded-full bg-primary-1 text-white font-medium ">Back this project</button>
-              <button><img src="./images/icon-bookmark.svg" /></button>
+              <button className="font-medium text-white rounded-full px-11 bg-primary-1 ">
+                Back this project
+              </button>
+              <button>
+                <img src="./images/icon-bookmark.svg" />
+              </button>
             </div>
           </section>
 
