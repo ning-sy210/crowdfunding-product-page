@@ -1,4 +1,33 @@
+import { useState } from "react";
+
+import ProgressBar from "./ProgressBar";
+import ProgressTracker, { ProgressTrackerProps } from "./ProgressTracker";
+
 const App = () => {
+  const backedAmountGoal = 100_000;
+  const [backedState] = useState({
+    backedAmount: 89914,
+    backers: 5007,
+  });
+  const progress = Math.floor(
+    (backedState.backedAmount / backedAmountGoal) * 100
+  );
+
+  const progressTrackers: ProgressTrackerProps[] = [
+    {
+      header: `$${backedState.backedAmount.toLocaleString("en-US")}`,
+      subText: `of $${backedAmountGoal.toLocaleString("en-US")} backed`,
+    },
+    {
+      header: backedState.backers.toLocaleString("en-US"),
+      subText: "total backers",
+    },
+    {
+      header: 56,
+      subText: "days left",
+    },
+  ];
+
   return (
     <div>
       <img src="./images/image-hero-mobile.jpg" title="mobile hero image" />
@@ -8,7 +37,7 @@ const App = () => {
           <h1 className="font-bold text-h2">crowdfund</h1>
           <img src="./images/icon-hamburger.svg" title="hamburger icon"></img>
         </header>
-        <main>
+        <main className="flex flex-col gap-y-6">
           <section className="relative flex flex-col gap-y-5 items-center text-center pt-[50px] px-6 pb-10 bg-white rounded-lg border-[1px] border-slate-200">
             <img
               src="./images/logo-mastercraft.svg"
@@ -35,20 +64,20 @@ const App = () => {
             </div>
           </section>
 
-          <section>
-            <section>
-              <p>$89914</p>
-              <p>of $100000 backed</p>
-            </section>
-            <section>
-              <p>5007</p>
-              <p>total backers</p>
-            </section>
-            <section>
-              <p>56</p>
-              <p>days left</p>
-            </section>
-            <div></div>
+          <section className="relative flex flex-col gap-y-6 items-center text-center pt-[28px] px-6 pb-9 bg-white rounded-lg border-[1px] border-slate-200 ">
+            {progressTrackers.map((tracker, i) => (
+              <>
+                <ProgressTracker
+                  header={tracker.header}
+                  subText={tracker.subText}
+                  key={tracker.subText}
+                />
+                {i !== progressTrackers.length - 1 && (
+                  <div className="w-[76px] h-[1px] bg-slate-300"></div>
+                )}
+              </>
+            ))}
+            <ProgressBar progress={progress} />
           </section>
 
           <section>
