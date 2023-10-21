@@ -9,7 +9,7 @@ const App = () => {
     backedAmount: 89914,
     backers: 5007,
   });
-  const progress = Math.floor(
+  const crowdFundingProgress = Math.floor(
     (backedState.backedAmount / backedAmountGoal) * 100
   );
 
@@ -77,7 +77,7 @@ const App = () => {
                 )}
               </>
             ))}
-            <ProgressBar progress={progress} />
+            <ProgressBar progress={crowdFundingProgress} />
           </section>
 
           <section>
