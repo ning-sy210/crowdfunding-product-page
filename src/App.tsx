@@ -64,7 +64,7 @@ const App = () => {
             </div>
           </section>
 
-          <section className="relative flex flex-col gap-y-6 items-center text-center pt-[28px] px-6 pb-9 bg-white rounded-lg border-[1px] border-slate-200 ">
+          <section className="flex flex-col gap-y-6 items-center text-center pt-[28px] px-6 pb-9 bg-white rounded-lg border-[1px] border-slate-200">
             {progressTrackers.map((tracker, i) => (
               <>
                 <ProgressTracker
