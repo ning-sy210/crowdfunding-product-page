@@ -33,14 +33,14 @@ const App = () => {
     <div>
       <img src="./images/image-hero-mobile.jpg" title="mobile hero image" />
 
-      <div className="absolute top-0 px-6 flex flex-col gap-y-[164px]">
+      <div className="absolute top-0 px-6 pb-20 flex flex-col gap-y-[164px]">
         <header className="flex items-center justify-between py-5 text-white">
           <h1 className="font-bold text-h2">crowdfund</h1>
           <img src="./images/icon-hamburger.svg" title="hamburger icon"></img>
         </header>
 
         <main className="flex flex-col gap-y-6">
-          <section className="relative flex flex-col gap-y-5 items-center text-center pt-[50px] px-6 pb-10 bg-white rounded-lg border-[1px] border-slate-200">
+          <section className="relative flex flex-col gap-y-5 items-center text-center pt-[50px] px-6 pb-10 bg-white rounded-lg border border-slate-100">
             <img
               src="./images/logo-mastercraft.svg"
               title="mastercraft logo"
@@ -66,7 +66,7 @@ const App = () => {
             </div>
           </section>
 
-          <section className="flex flex-col gap-y-6 items-center text-center pt-7 px-6 pb-9 bg-white rounded-lg border-[1px] border-slate-200">
+          <section className="flex flex-col gap-y-6 items-center text-center pt-7 px-6 pb-9 bg-white rounded-lg border border-slate-100">
             {progressTrackers.map((tracker, i) => (
               <>
                 <ProgressTracker
@@ -82,7 +82,7 @@ const App = () => {
             <ProgressBar progress={crowdFundingProgress} />
           </section>
 
-          <section className="flex flex-col gap-y-6 pt-10 px-6 pb-9 bg-white rounded-lg border-[1px] border-slate-200">
+          <section className="flex flex-col gap-y-6 pt-10 px-6 pb-9 bg-white rounded-lg border border-slate-100">
             <section className="flex flex-col gap-y-6">
               <h2 className="text-h4 font-bold">About this project</h2>
               <div className="flex flex-col gap-y-[inherit] text-h5 leading-6 text-neutral-2">
