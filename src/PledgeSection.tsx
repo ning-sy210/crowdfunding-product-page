@@ -35,9 +35,14 @@ const PledgeOption = ({
   stock,
 }: PledgeOptionProps) => {
   const [stockLeft] = useState(stock);
+  const outOfStock = stock <= 0;
 
   return (
-    <section className="flex flex-col items-start p-[22px] gap-y-5 border border-slate-300 rounded-lg">
+    <section
+      className={`flex flex-col items-start p-[22px] gap-y-5 border border-slate-300 rounded-lg${
+        outOfStock && " opacity-50"
+      }`}
+    >
       <section className="flex flex-col gap-y-1">
         <h3 className="text-h5 font-bold">{reward}</h3>
         <p className="text-h5 font-medium text-primary-1">
@@ -53,9 +58,12 @@ const PledgeOption = ({
       </p>
       <button
         type="button"
-        className="px-8 py-[14px] bg-primary-1 text-white text-h5 font-bold rounded-full"
+        className={`w-40 h-12 ${
+          outOfStock ? "bg-zinc-400" : "bg-primary-1"
+        } text-white text-h5 font-bold rounded-full`}
+        disabled={outOfStock}
       >
-        Select Reward
+        {outOfStock ? "Out of Stock" : "Select Reward"}
       </button>
     </section>
   );
