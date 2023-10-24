@@ -3,7 +3,7 @@ type ProgressBarType = {
 };
 
 const ProgressBar = ({ progress }: ProgressBarType) => {
-  const goalProgress = Math.max(progress, 100);
+  const goalProgress = Math.min(progress, 100);
 
   return (
     <div className="w-full h-3 rounded-full bg-slate-100">
