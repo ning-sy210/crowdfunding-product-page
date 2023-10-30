@@ -3,13 +3,19 @@ import { useState } from "react";
 import PledgeSection from "./PledgeSection";
 import ProgressBar from "./ProgressBar";
 import ProgressTracker, { ProgressTrackerProps } from "./ProgressTracker";
+import PledgeModal from "./PledgeModal";
+import { PledgeRewards } from "./constants/enums";
 
 const App = () => {
-  const backedAmountGoal = 100_000;
+  const [showPledgeModal, setShowPledgeModal] = useState<
+    boolean | PledgeRewards
+  >(false);
   const [backedState] = useState({
     backedAmount: 89914,
     backers: 5007,
   });
+
+  const backedAmountGoal = 100_000;
   const crowdFundingProgress = Math.floor(
     (backedState.backedAmount / backedAmountGoal) * 100
   );
@@ -30,7 +36,7 @@ const App = () => {
   ];
 
   return (
-    <div>
+    <div className="relative">
       <img src="./images/image-hero-mobile.jpg" title="mobile hero image" />
 
       <div className="absolute top-0 px-6 pb-20 flex flex-col gap-y-[164px]">
@@ -56,6 +62,7 @@ const App = () => {
             <div className="flex justify-between w-full">
               <button
                 type="button"
+                onClick={() => setShowPledgeModal(true)}
                 className="font-medium text-white rounded-full w-[77%] bg-primary-1 "
               >
                 Back this project
@@ -102,10 +109,22 @@ const App = () => {
               </div>
             </section>
 
-            <PledgeSection />
+            <PledgeSection
+              selectRewardOnClick={(reward) => setShowPledgeModal(reward)}
+            />
           </section>
         </main>
       </div>
+
+      {showPledgeModal && (
+        <PledgeModal
+          defaultSelected={showPledgeModal === true ? null : showPledgeModal}
+          setSelectedReward={(reward: PledgeRewards) =>
+            setShowPledgeModal(reward)
+          }
+          closeModal={() => setShowPledgeModal(false)}
+        />
+      )}
     </div>
   );
 };

@@ -6,6 +6,7 @@ export type PledgeOptionProps = {
   minPledgeAmt: number;
   desc: string;
   stock: number;
+  selectRewardOnClick?: () => void;
 };
 
 const PledgeOption = ({
@@ -13,6 +14,7 @@ const PledgeOption = ({
   minPledgeAmt,
   desc,
   stock,
+  selectRewardOnClick,
 }: PledgeOptionProps) => {
   const [stockLeft] = useState(stock);
   const outOfStock = stock <= 0;
@@ -38,6 +40,7 @@ const PledgeOption = ({
       </p>
       <button
         type="button"
+        onClick={selectRewardOnClick}
         className={`w-40 h-12 ${
           outOfStock ? "bg-zinc-400" : "bg-primary-1"
         } text-white text-h5 font-bold rounded-full`}
@@ -49,7 +52,11 @@ const PledgeOption = ({
   );
 };
 
-const PledgeSection = () => {
+type PledgeSectionProps = {
+  selectRewardOnClick: (reward: PledgeRewards) => void;
+};
+
+const PledgeSection = ({ selectRewardOnClick }: PledgeSectionProps) => {
   return (
     <>
       {pledgeOptions.map(
@@ -61,6 +68,7 @@ const PledgeSection = () => {
               minPledgeAmt={option.minPledgeAmt}
               desc={option.desc}
               stock={option.stock}
+              selectRewardOnClick={() => selectRewardOnClick(option.reward)}
             />
           )
       )}
