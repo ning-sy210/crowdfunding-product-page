@@ -33,14 +33,19 @@ const PledgeModalOption = ({
           onClick={onClick}
           className="w-6 h-6 bg-primary-1"
         />
-        <label htmlFor={`${reward} input`} className="flex flex-col gap-y-1">
-          <span className="text-h5 font-bold">{reward}</span>
+        <label
+          htmlFor={`${reward} input`}
+          className="flex flex-col h-12 justify-center"
+        >
+          <div className="flex flex-col gap-y-1 justify-between">
+            <span className="text-h5 font-bold">{reward}</span>
 
-          {isPaidOption && (
-            <span className="text-h5 font-medium text-primary-1">
-              Pledge ${minPledgeAmt.toLocaleString("en-US")} or more
-            </span>
-          )}
+            {isPaidOption && (
+              <span className="text-h5 font-medium text-primary-1">
+                Pledge ${minPledgeAmt.toLocaleString("en-US")} or more
+              </span>
+            )}
+          </div>
         </label>
       </div>
       <p className="text-h5 text-neutral-2 leading-6">{desc}</p>
