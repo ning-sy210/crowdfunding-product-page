@@ -14,13 +14,15 @@ const PledgeModalOption = ({
   checked,
   onClick,
 }: PledgeModalOptionInterface) => {
-  const outOfStock = minPledgeAmt > 0 && stock === 0;
+  const isPaidOption = minPledgeAmt > 0;
+  const outOfStock = isPaidOption && stock === 0;
 
   return (
     <section
-      className={`flex flex-col gap-y-8 px-6 py-8 rounded-lg border border-slate-300${
+      className={`flex flex-col gap-y-5 px-6 pt-5 pb-7 rounded-lg border border-slate-300${
         outOfStock ? " opacity-50" : ""
       } [&:has(input:checked)]:border-primary-1 [&:has(input:checked)]:border-2`}
+      onClick={outOfStock ? () => null : onClick}
     >
       <div className="flex items-center gap-x-4">
         <input
@@ -31,11 +33,24 @@ const PledgeModalOption = ({
           onClick={onClick}
           className="w-6 h-6 bg-primary-1"
         />
-        <label htmlFor={`${reward} input`} className="text-h5 font-bold">
-          {reward}
+        <label htmlFor={`${reward} input`} className="flex flex-col gap-y-1">
+          <span className="text-h5 font-bold">{reward}</span>
+
+          {isPaidOption && (
+            <span className="text-h5 font-medium text-primary-1">
+              Pledge ${minPledgeAmt.toLocaleString("en-US")} or more
+            </span>
+          )}
         </label>
       </div>
       <p className="text-h5 text-neutral-2 leading-6">{desc}</p>
+
+      {isPaidOption && (
+        <p className="flex items-center gap-x-2">
+          <span className="text-h4 font-bold">{stock}</span>
+          <span className="text-h5 text-neutral-2 leading-6">left</span>
+        </p>
+      )}
     </section>
   );
 };
