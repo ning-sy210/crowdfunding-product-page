@@ -14,17 +14,19 @@ const PledgeModalOption = ({
   checked,
   onClick,
 }: PledgeModalOptionInterface) => {
+  const outOfStock = minPledgeAmt > 0 && stock === 0;
+
   return (
     <section
       className={`flex flex-col gap-y-8 px-6 py-8 rounded-lg border border-slate-300${
-        stock === 0 ? " opacity-50" : ""
+        outOfStock ? " opacity-50" : ""
       } [&:has(input:checked)]:border-primary-1 [&:has(input:checked)]:border-2`}
     >
       <div className="flex items-center gap-x-4">
         <input
           id={`${reward} input`}
           type="radio"
-          disabled={stock === 0}
+          disabled={outOfStock}
           checked={checked}
           onClick={onClick}
           className="w-6 h-6 bg-primary-1"
