@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { PledgeRewards, pledgeOptions } from "./constants/enums";
 import { PledgeOptionProps } from "./PledgeSection";
 
@@ -12,32 +13,44 @@ const PledgeModal = ({
   setSelectedReward,
   closeModal,
 }: PledgeModalProps) => {
+  useEffect(() => {
+    if (defaultSelected !== null) {
+      setTimeout(() => {
+        const pledgeOption = document.getElementById(defaultSelected);
+        pledgeOption?.scrollIntoView({ behavior: "smooth" });
+      }, 200);
+    }
+  }, []);
+
   return (
     <>
       <div className="fixed inset-0 bg-neutral-1 opacity-50 z-[1]"></div>
-      <section className="absolute top-[120px] flex flex-col gap-y-6 mx-6 px-6 py-7 rounded-lg bg-white z-[2] overflow-y-auto">
-        <div className="flex items-center justify-between">
-          <h2 className="text-h4 font-bold">Back this project</h2>
-          <button type="button" onClick={closeModal}>
-            <img src="./images/icon-close-modal.svg" alt="close modal icon" />
-          </button>
-        </div>
-        <p className="text-h5 text-neutral-2 leading-6">
-          Want to support us in bringing Mastercraft Bamboo Monitor Riser out in
-          the world?
-        </p>
-        {pledgeOptions.map((option) => (
-          <PledgeModalOption
-            key={option.reward}
-            reward={option.reward}
-            minPledgeAmt={option.minPledgeAmt}
-            desc={option.desc}
-            stock={option.stock}
-            checked={option.reward === defaultSelected}
-            onClick={() => setSelectedReward(option.reward)}
-          />
-        ))}
-      </section>
+
+      <div className="fixed top-0 py-[120px] px-6 z-[2] h-full overflow-auto overscroll-contain">
+        <section className="flex flex-col gap-y-6 px-6 py-7 rounded-lg bg-white z-[2]">
+          <div className="flex items-center justify-between">
+            <h2 className="text-h4 font-bold">Back this project</h2>
+            <button type="button" onClick={closeModal}>
+              <img src="./images/icon-close-modal.svg" alt="close modal icon" />
+            </button>
+          </div>
+          <p className="text-h5 text-neutral-2 leading-6">
+            Want to support us in bringing Mastercraft Bamboo Monitor Riser out
+            in the world?
+          </p>
+          {pledgeOptions.map((option) => (
+            <PledgeModalOption
+              key={option.reward}
+              reward={option.reward}
+              minPledgeAmt={option.minPledgeAmt}
+              desc={option.desc}
+              stock={option.stock}
+              checked={option.reward === defaultSelected}
+              onClick={() => setSelectedReward(option.reward)}
+            />
+          ))}
+        </section>
+      </div>
     </>
   );
 };
@@ -60,6 +73,7 @@ const PledgeModalOption = ({
 
   return (
     <section
+      id={reward}
       className={`rounded-lg border border-slate-300${
         outOfStock ? " opacity-50" : ""
       } [&:has(input:checked)]:border-primary-1 [&:has(input:checked)]:border-2`}
