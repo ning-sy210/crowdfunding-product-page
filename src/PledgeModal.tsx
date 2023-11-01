@@ -1,16 +1,20 @@
 import { useEffect, useState } from "react";
-import { PledgeRewards, pledgeOptions } from "./constants/enums";
+
+import { inventoryStockType } from "./App";
 import { PledgeOptionProps } from "./PledgeSection";
+import { PledgeRewards, pledgeOptions } from "./constants/enums";
 
 type PledgeModalProps = {
   defaultSelected: null | PledgeRewards;
   closeModal: () => void;
+  inventoryStock: inventoryStockType;
   makePledgeFor: (pledgeOption: PledgeRewards, pledgeAmount: number) => void;
 };
 
 const PledgeModal = ({
   defaultSelected,
   closeModal,
+  inventoryStock,
   makePledgeFor,
 }: PledgeModalProps) => {
   const [selectedOption, setSelectedOption] = useState(defaultSelected);
@@ -60,7 +64,7 @@ const PledgeModal = ({
                 reward={option.reward}
                 minPledgeAmt={option.minPledgeAmt}
                 desc={option.desc}
-                stock={option.stock}
+                stock={inventoryStock[option.reward]}
                 checked={option.reward === selectedOption}
                 onOptionSelect={() => setSelectedOption(option.reward)}
                 onPledgeConfirm={(pledgeAmount: number) =>

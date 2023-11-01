@@ -1,11 +1,15 @@
-import { useState } from "react";
+import { inventoryStockType } from "./App";
 import { PledgeRewards, pledgeOptions } from "./constants/enums";
 
 type PledgeSectionProps = {
+  inventoryStock: inventoryStockType;
   selectRewardOnClick: (reward: PledgeRewards) => void;
 };
 
-const PledgeSection = ({ selectRewardOnClick }: PledgeSectionProps) => {
+const PledgeSection = ({
+  inventoryStock,
+  selectRewardOnClick,
+}: PledgeSectionProps) => {
   return (
     <>
       {pledgeOptions.map(
@@ -16,7 +20,7 @@ const PledgeSection = ({ selectRewardOnClick }: PledgeSectionProps) => {
               reward={option.reward}
               minPledgeAmt={option.minPledgeAmt}
               desc={option.desc}
-              stock={option.stock}
+              stock={inventoryStock[option.reward]}
               selectRewardOnClick={() => selectRewardOnClick(option.reward)}
             />
           )
@@ -40,7 +44,6 @@ const PledgeOption = ({
   stock,
   selectRewardOnClick,
 }: PledgeOptionProps) => {
-  const [stockLeft] = useState(stock);
   const outOfStock = stock <= 0;
 
   return (
@@ -58,7 +61,7 @@ const PledgeOption = ({
       <p className="text-h5 text-neutral-2 leading-6">{desc}</p>
       <p className="flex items-center gap-x-2">
         <span className="text-h1 font-bold">
-          {stockLeft.toLocaleString("en-US")}
+          {stock.toLocaleString("en-US")}
         </span>
         <span className="text-[15px] text-neutral-2">left</span>
       </p>

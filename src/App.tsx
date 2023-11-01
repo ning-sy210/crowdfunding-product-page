@@ -1,17 +1,29 @@
 import { Fragment, useState } from "react";
 
+import PledgeModal from "./PledgeModal";
 import PledgeSection from "./PledgeSection";
 import ProgressBar from "./ProgressBar";
 import ProgressTracker, { ProgressTrackerProps } from "./ProgressTracker";
-import PledgeModal from "./PledgeModal";
-import { PledgeRewards } from "./constants/enums";
+
+import { PledgeRewards, pledgeOptions } from "./constants/enums";
 
 type PledgeModalStateType = {
   showModal: boolean;
   defaultSelectedOption: null | PledgeRewards;
 };
 
+export type inventoryStockType = {
+  [key: string]: number;
+};
+
 const App = () => {
+  const inventoryStock: inventoryStockType = {};
+
+  for (const option of pledgeOptions) {
+    if (option.reward === PledgeRewards.NONE) continue;
+    inventoryStock[option.reward] = option.stock;
+  }
+
   const [pledgeModalState, setPledgeModalState] =
     useState<PledgeModalStateType>({
       showModal: false,
@@ -20,7 +32,7 @@ const App = () => {
   const [projectPledgeState, setProjectPledgeState] = useState({
     backedAmount: 89914,
     backers: 5007,
-    // TODO: add state for stock inventory
+    stock: inventoryStock,
   });
 
   const backedAmountGoal = 100_000;
@@ -58,7 +70,15 @@ const App = () => {
     const newProjectPledgeState = {
       backedAmount: projectPledgeState.backedAmount + pledgeAmount,
       backers: projectPledgeState.backers + 1,
+      stock: {
+        ...projectPledgeState.stock,
+      },
     };
+
+    if (pledgeOption !== PledgeRewards.NONE) {
+      newProjectPledgeState.stock[pledgeOption] =
+        projectPledgeState.stock[pledgeOption] - 1;
+    }
     setProjectPledgeState(newProjectPledgeState);
   }
 
@@ -136,6 +156,7 @@ const App = () => {
             </section>
 
             <PledgeSection
+              inventoryStock={projectPledgeState.stock}
               selectRewardOnClick={(reward) => setShowPledgeModal(true, reward)}
             />
           </section>
@@ -146,6 +167,7 @@ const App = () => {
         <PledgeModal
           defaultSelected={pledgeModalState.defaultSelectedOption}
           closeModal={() => setShowPledgeModal(false)}
+          inventoryStock={projectPledgeState.stock}
           makePledgeFor={makePledgeFor}
         />
       )}
