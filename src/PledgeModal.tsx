@@ -63,7 +63,7 @@ const PledgeModal = ({
                 desc={option.desc}
                 stock={option.stock}
                 checked={option.reward === defaultSelected}
-                onClick={() => setSelectedReward(option.reward)}
+                onOptionSelect={() => setSelectedReward(option.reward)}
                 onPledgeConfirm={(pledgeAmount: number) =>
                   onPledgeConfirm(option.reward, pledgeAmount)
                 }
@@ -78,7 +78,7 @@ const PledgeModal = ({
 
 interface PledgeModalOptionInterface extends PledgeOptionProps {
   checked: boolean;
-  onClick: () => void;
+  onOptionSelect: () => void;
   onPledgeConfirm: (pledgeAmount: number) => void;
 }
 
@@ -88,7 +88,7 @@ const PledgeModalOption = ({
   desc,
   stock,
   checked,
-  onClick,
+  onOptionSelect,
   onPledgeConfirm,
 }: PledgeModalOptionInterface) => {
   const [pledgeAmount, setPledgeAmount] = useState(minPledgeAmt);
@@ -101,7 +101,7 @@ const PledgeModalOption = ({
       className={`rounded-lg border border-slate-300${
         outOfStock ? " opacity-50" : ""
       } [&:has(input:checked)]:border-primary-1 [&:has(input:checked)]:border-2`}
-      onClick={outOfStock ? () => null : onClick}
+      onClick={outOfStock ? () => null : onOptionSelect}
     >
       <section className="flex flex-col gap-y-5 px-6 pt-5 pb-7">
         <div className="flex items-center gap-x-4">
@@ -110,7 +110,7 @@ const PledgeModalOption = ({
             type="radio"
             disabled={outOfStock}
             checked={checked}
-            onClick={onClick}
+            onChange={onOptionSelect}
             className="w-6 h-6 bg-primary-1"
           />
           <label
