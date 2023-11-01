@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { PledgeRewards, pledgeOptions } from "./constants/enums";
 import { PledgeOptionProps } from "./PledgeSection";
 
@@ -13,6 +13,8 @@ const PledgeModal = ({
   setSelectedReward,
   closeModal,
 }: PledgeModalProps) => {
+  const [showConfirmationModal, setShowConfirmationModal] = useState(false);
+
   useEffect(() => {
     if (defaultSelected !== null) {
       setTimeout(() => {
@@ -24,35 +26,47 @@ const PledgeModal = ({
     // when changing pledge options in the modal
   }, []);
 
+  function onPledgeConfirm() {
+    setShowConfirmationModal(true);
+  }
+
   return (
     <>
       <div className="fixed inset-0 bg-neutral-1 opacity-50 z-[1]"></div>
 
-      <div className="fixed top-0 py-[120px] px-6 z-[2] h-full overflow-auto overscroll-contain">
-        <section className="flex flex-col gap-y-6 px-6 py-7 rounded-lg bg-white z-[2]">
-          <div className="flex items-center justify-between">
-            <h2 className="text-h4 font-bold">Back this project</h2>
-            <button type="button" onClick={closeModal}>
-              <img src="./images/icon-close-modal.svg" alt="close modal icon" />
-            </button>
-          </div>
-          <p className="text-h5 text-neutral-2 leading-6">
-            Want to support us in bringing Mastercraft Bamboo Monitor Riser out
-            in the world?
-          </p>
-          {pledgeOptions.map((option) => (
-            <PledgeModalOption
-              key={option.reward}
-              reward={option.reward}
-              minPledgeAmt={option.minPledgeAmt}
-              desc={option.desc}
-              stock={option.stock}
-              checked={option.reward === defaultSelected}
-              onClick={() => setSelectedReward(option.reward)}
-            />
-          ))}
-        </section>
-      </div>
+      {showConfirmationModal ? (
+        <PledgeConfirmationModal onConfirmationClick={closeModal} />
+      ) : (
+        <div className="fixed top-0 py-[120px] px-6 z-[2] h-full overflow-auto overscroll-contain">
+          <section className="flex flex-col gap-y-6 px-6 py-7 rounded-lg bg-white z-[2]">
+            <div className="flex items-center justify-between">
+              <h2 className="text-h4 font-bold">Back this project</h2>
+              <button type="button" onClick={closeModal}>
+                <img
+                  src="./images/icon-close-modal.svg"
+                  alt="close modal icon"
+                />
+              </button>
+            </div>
+            <p className="text-h5 text-neutral-2 leading-6">
+              Want to support us in bringing Mastercraft Bamboo Monitor Riser
+              out in the world?
+            </p>
+            {pledgeOptions.map((option) => (
+              <PledgeModalOption
+                key={option.reward}
+                reward={option.reward}
+                minPledgeAmt={option.minPledgeAmt}
+                desc={option.desc}
+                stock={option.stock}
+                checked={option.reward === defaultSelected}
+                onClick={() => setSelectedReward(option.reward)}
+                onPledgeConfirm={onPledgeConfirm}
+              />
+            ))}
+          </section>
+        </div>
+      )}
     </>
   );
 };
@@ -60,6 +74,7 @@ const PledgeModal = ({
 interface PledgeModalOptionInterface extends PledgeOptionProps {
   checked: boolean;
   onClick: () => void;
+  onPledgeConfirm: () => void;
 }
 
 const PledgeModalOption = ({
@@ -69,6 +84,7 @@ const PledgeModalOption = ({
   stock,
   checked,
   onClick,
+  onPledgeConfirm,
 }: PledgeModalOptionInterface) => {
   const isPaidOption = minPledgeAmt > 0;
   const outOfStock = isPaidOption && stock === 0;
@@ -132,13 +148,48 @@ const PledgeModalOption = ({
               min={minPledgeAmt}
               defaultValue={minPledgeAmt}
             ></input>
-            <button className="bg-primary-1 text-white rounded-full w-1/2 py-[13px] text-h5 font-bold">
+            <button
+              type="button"
+              onClick={onPledgeConfirm}
+              className="bg-primary-1 text-white rounded-full w-1/2 py-[13px] text-h5 font-bold"
+            >
               Continue
             </button>
           </div>
         </section>
       )}
     </section>
+  );
+};
+
+type PledgeConfirmationProps = {
+  onConfirmationClick: () => void;
+};
+
+const PledgeConfirmationModal = ({
+  onConfirmationClick,
+}: PledgeConfirmationProps) => {
+  return (
+    <div className="fixed top-0 py-36 px-6 z-[2]">
+      <section className="flex flex-col text-center items-center gap-y-8 px-4 pt-8 pb-10 bg-white rounded-lg z-[2]">
+        <div className="flex flex-col gap-y-5 items-center">
+          <img src="./images/icon-check.svg" alt="check logo" />
+          <p className="text-h4 font-bold">Thanks for your support!</p>
+          <p className="leading-6 text-h5 text-neutral-2">
+            Your pledge brings us one step closer to sharing Mastercraft Bamboo
+            Monitor Riser worldwide. You will get an email once our campaign is
+            completed.
+          </p>
+        </div>
+        <button
+          type="button"
+          onClick={onConfirmationClick}
+          className="px-8 py-3 rounded-full text-white text-h5 font-bold bg-primary-1"
+        >
+          Got it!
+        </button>
+      </section>
+    </div>
   );
 };
 
