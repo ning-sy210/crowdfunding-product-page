@@ -10,23 +10,23 @@ const App = () => {
   const [showPledgeModal, setShowPledgeModal] = useState<
     boolean | PledgeRewards
   >(false);
-  const [backedState] = useState({
+  const [projectPledgeState, setProjectPledgeState] = useState({
     backedAmount: 89914,
     backers: 5007,
   });
 
   const backedAmountGoal = 100_000;
   const crowdFundingProgress = Math.floor(
-    (backedState.backedAmount / backedAmountGoal) * 100
+    (projectPledgeState.backedAmount / backedAmountGoal) * 100
   );
 
   const progressTrackers: ProgressTrackerProps[] = [
     {
-      header: `$${backedState.backedAmount.toLocaleString("en-US")}`,
+      header: `$${projectPledgeState.backedAmount.toLocaleString("en-US")}`,
       subText: `of $${backedAmountGoal.toLocaleString("en-US")} backed`,
     },
     {
-      header: backedState.backers.toLocaleString("en-US"),
+      header: projectPledgeState.backers.toLocaleString("en-US"),
       subText: "total backers",
     },
     {
@@ -34,6 +34,14 @@ const App = () => {
       subText: "days left",
     },
   ];
+
+  function makePledgeFor(pledgeOption: PledgeRewards, pledgeAmount: number) {
+    const newProjectPledgeState = {
+      backedAmount: projectPledgeState.backedAmount + pledgeAmount,
+      backers: projectPledgeState.backers + 1,
+    };
+    setProjectPledgeState(newProjectPledgeState);
+  }
 
   return (
     <div className="relative">
@@ -122,6 +130,7 @@ const App = () => {
             setShowPledgeModal(reward)
           }
           closeModal={() => setShowPledgeModal(false)}
+          makePledgeFor={makePledgeFor}
         />
       )}
     </div>

@@ -6,12 +6,14 @@ type PledgeModalProps = {
   defaultSelected: null | PledgeRewards;
   setSelectedReward: (option: PledgeRewards) => void;
   closeModal: () => void;
+  makePledgeFor: (pledgeOption: PledgeRewards, pledgeAmount: number) => void;
 };
 
 const PledgeModal = ({
   defaultSelected,
   setSelectedReward,
   closeModal,
+  makePledgeFor,
 }: PledgeModalProps) => {
   const [showConfirmationModal, setShowConfirmationModal] = useState(false);
 
@@ -26,7 +28,8 @@ const PledgeModal = ({
     // when changing pledge options in the modal
   }, []);
 
-  function onPledgeConfirm() {
+  function onPledgeConfirm(pledgeOption: PledgeRewards, pledgeAmount: number) {
+    makePledgeFor(pledgeOption, pledgeAmount);
     setShowConfirmationModal(true);
   }
 
@@ -61,7 +64,9 @@ const PledgeModal = ({
                 stock={option.stock}
                 checked={option.reward === defaultSelected}
                 onClick={() => setSelectedReward(option.reward)}
-                onPledgeConfirm={onPledgeConfirm}
+                onPledgeConfirm={(pledgeAmount: number) =>
+                  onPledgeConfirm(option.reward, pledgeAmount)
+                }
               />
             ))}
           </section>
@@ -74,7 +79,7 @@ const PledgeModal = ({
 interface PledgeModalOptionInterface extends PledgeOptionProps {
   checked: boolean;
   onClick: () => void;
-  onPledgeConfirm: () => void;
+  onPledgeConfirm: (pledgeAmount: number) => void;
 }
 
 const PledgeModalOption = ({
@@ -86,6 +91,7 @@ const PledgeModalOption = ({
   onClick,
   onPledgeConfirm,
 }: PledgeModalOptionInterface) => {
+  const [pledgeAmount, setPledgeAmount] = useState(minPledgeAmt);
   const isPaidOption = minPledgeAmt > 0;
   const outOfStock = isPaidOption && stock === 0;
 
@@ -144,13 +150,14 @@ const PledgeModalOption = ({
             </span>
             <input
               type="number"
+              onChange={(e) => setPledgeAmount(parseInt(e.target.value))}
               className="w-[43%] border border-slate-300 rounded-full pl-10 text-h5 font-bold"
               min={minPledgeAmt}
               defaultValue={minPledgeAmt}
             ></input>
             <button
               type="button"
-              onClick={onPledgeConfirm}
+              onClick={() => onPledgeConfirm(pledgeAmount)}
               className="bg-primary-1 text-white rounded-full w-1/2 py-[13px] text-h5 font-bold"
             >
               Continue
