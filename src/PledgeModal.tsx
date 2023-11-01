@@ -132,7 +132,7 @@ const PledgeModalOption = ({
               min={minPledgeAmt}
               defaultValue={minPledgeAmt}
             ></input>
-            <button className="bg-primary-1 text-white rounded-full w-[50%] py-[13px] text-h5 font-bold">
+            <button className="bg-primary-1 text-white rounded-full w-1/2 py-[13px] text-h5 font-bold">
               Continue
             </button>
           </div>
