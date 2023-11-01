@@ -97,6 +97,7 @@ const PledgeModalOption = ({
   const [pledgeAmount, setPledgeAmount] = useState(minPledgeAmt);
   const isPaidOption = minPledgeAmt > 0;
   const outOfStock = isPaidOption && stock === 0;
+  const lowInStock = stock > 0 && stock <= 20;
 
   return (
     <section
@@ -136,7 +137,11 @@ const PledgeModalOption = ({
 
         {/* Stock left label */}
         {isPaidOption && (
-          <p className="flex items-center gap-x-2">
+          <p
+            className={`flex items-center gap-x-2${
+              lowInStock ? " text-red-500" : ""
+            }`}
+          >
             <span className="text-h4 font-bold">{stock}</span>
             <span className="text-h5 text-neutral-2 leading-6">left</span>
           </p>

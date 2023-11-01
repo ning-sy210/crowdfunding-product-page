@@ -45,6 +45,7 @@ const PledgeOption = ({
   selectRewardOnClick,
 }: PledgeOptionProps) => {
   const outOfStock = stock <= 0;
+  const lowInStock = stock > 0 && stock <= 20;
 
   return (
     <section
@@ -59,7 +60,11 @@ const PledgeOption = ({
         </p>
       </section>
       <p className="text-h5 text-neutral-2 leading-6">{desc}</p>
-      <p className="flex items-center gap-x-2">
+      <p
+        className={`flex items-center gap-x-2${
+          lowInStock ? " text-red-500" : ""
+        }`}
+      >
         <span className="text-h1 font-bold">
           {stock.toLocaleString("en-US")}
         </span>
