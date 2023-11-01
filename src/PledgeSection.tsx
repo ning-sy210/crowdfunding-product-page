@@ -1,6 +1,30 @@
 import { useState } from "react";
 import { PledgeRewards, pledgeOptions } from "./constants/enums";
 
+type PledgeSectionProps = {
+  selectRewardOnClick: (reward: PledgeRewards) => void;
+};
+
+const PledgeSection = ({ selectRewardOnClick }: PledgeSectionProps) => {
+  return (
+    <>
+      {pledgeOptions.map(
+        (option) =>
+          option.minPledgeAmt > 0 && (
+            <PledgeOption
+              key={option.reward}
+              reward={option.reward}
+              minPledgeAmt={option.minPledgeAmt}
+              desc={option.desc}
+              stock={option.stock}
+              selectRewardOnClick={() => selectRewardOnClick(option.reward)}
+            />
+          )
+      )}
+    </>
+  );
+};
+
 export type PledgeOptionProps = {
   reward: PledgeRewards;
   minPledgeAmt: number;
@@ -49,30 +73,6 @@ const PledgeOption = ({
         {outOfStock ? "Out of Stock" : "Select Reward"}
       </button>
     </section>
-  );
-};
-
-type PledgeSectionProps = {
-  selectRewardOnClick: (reward: PledgeRewards) => void;
-};
-
-const PledgeSection = ({ selectRewardOnClick }: PledgeSectionProps) => {
-  return (
-    <>
-      {pledgeOptions.map(
-        (option) =>
-          option.minPledgeAmt > 0 && (
-            <PledgeOption
-              key={option.reward}
-              reward={option.reward}
-              minPledgeAmt={option.minPledgeAmt}
-              desc={option.desc}
-              stock={option.stock}
-              selectRewardOnClick={() => selectRewardOnClick(option.reward)}
-            />
-          )
-      )}
-    </>
   );
 };
 
