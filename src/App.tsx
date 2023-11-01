@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { Fragment, useState } from "react";
 
 import PledgeSection from "./PledgeSection";
 import ProgressBar from "./ProgressBar";
@@ -75,16 +75,15 @@ const App = () => {
 
           <section className="flex flex-col gap-y-6 items-center text-center pt-7 px-6 pb-9 bg-white rounded-lg border border-slate-100">
             {progressTrackers.map((tracker, i) => (
-              <>
+              <Fragment key={i}>
                 <ProgressTracker
                   header={tracker.header}
                   subText={tracker.subText}
-                  key={tracker.subText}
                 />
                 {i !== progressTrackers.length - 1 && (
                   <div className="w-[76px] h-[1px] bg-slate-300"></div>
                 )}
-              </>
+              </Fragment>
             ))}
             <ProgressBar progress={crowdFundingProgress} />
           </section>
