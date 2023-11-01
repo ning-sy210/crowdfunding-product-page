@@ -6,20 +6,27 @@ import ProgressTracker, { ProgressTrackerProps } from "./ProgressTracker";
 import PledgeModal from "./PledgeModal";
 import { PledgeRewards } from "./constants/enums";
 
+type PledgeModalStateType = {
+  showModal: boolean;
+  defaultSelectedOption: null | PledgeRewards;
+};
+
 const App = () => {
-  const [showPledgeModal, setShowPledgeModal] = useState<
-    boolean | PledgeRewards
-  >(false);
+  const [pledgeModalState, setPledgeModalState] =
+    useState<PledgeModalStateType>({
+      showModal: false,
+      defaultSelectedOption: null,
+    });
   const [projectPledgeState, setProjectPledgeState] = useState({
     backedAmount: 89914,
     backers: 5007,
+    // TODO: add state for stock inventory
   });
 
   const backedAmountGoal = 100_000;
   const crowdFundingProgress = Math.floor(
     (projectPledgeState.backedAmount / backedAmountGoal) * 100
   );
-
   const progressTrackers: ProgressTrackerProps[] = [
     {
       header: `$${projectPledgeState.backedAmount.toLocaleString("en-US")}`,
@@ -34,6 +41,18 @@ const App = () => {
       subText: "days left",
     },
   ];
+
+  function setShowPledgeModal(
+    showModal: boolean,
+    defaultSelectedOption: null | PledgeRewards = null
+  ) {
+    const newPledgeModalState: PledgeModalStateType = {
+      showModal: showModal,
+      defaultSelectedOption: showModal ? defaultSelectedOption : null,
+    };
+
+    setPledgeModalState(newPledgeModalState);
+  }
 
   function makePledgeFor(pledgeOption: PledgeRewards, pledgeAmount: number) {
     const newProjectPledgeState = {
@@ -117,18 +136,15 @@ const App = () => {
             </section>
 
             <PledgeSection
-              selectRewardOnClick={(reward) => setShowPledgeModal(reward)}
+              selectRewardOnClick={(reward) => setShowPledgeModal(true, reward)}
             />
           </section>
         </main>
       </div>
 
-      {showPledgeModal && (
+      {pledgeModalState.showModal && (
         <PledgeModal
-          defaultSelected={showPledgeModal === true ? null : showPledgeModal}
-          setSelectedReward={(reward: PledgeRewards) =>
-            setShowPledgeModal(reward)
-          }
+          defaultSelected={pledgeModalState.defaultSelectedOption}
           closeModal={() => setShowPledgeModal(false)}
           makePledgeFor={makePledgeFor}
         />

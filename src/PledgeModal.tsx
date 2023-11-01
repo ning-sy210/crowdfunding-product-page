@@ -4,23 +4,22 @@ import { PledgeOptionProps } from "./PledgeSection";
 
 type PledgeModalProps = {
   defaultSelected: null | PledgeRewards;
-  setSelectedReward: (option: PledgeRewards) => void;
   closeModal: () => void;
   makePledgeFor: (pledgeOption: PledgeRewards, pledgeAmount: number) => void;
 };
 
 const PledgeModal = ({
   defaultSelected,
-  setSelectedReward,
   closeModal,
   makePledgeFor,
 }: PledgeModalProps) => {
+  const [selectedOption, setSelectedOption] = useState(defaultSelected);
   const [showConfirmationModal, setShowConfirmationModal] = useState(false);
 
   useEffect(() => {
-    if (defaultSelected !== null) {
+    if (selectedOption !== null) {
       setTimeout(() => {
-        const pledgeOption = document.getElementById(defaultSelected);
+        const pledgeOption = document.getElementById(selectedOption);
         pledgeOption?.scrollIntoView({ behavior: "smooth" });
       }, 200);
     }
@@ -62,8 +61,8 @@ const PledgeModal = ({
                 minPledgeAmt={option.minPledgeAmt}
                 desc={option.desc}
                 stock={option.stock}
-                checked={option.reward === defaultSelected}
-                onOptionSelect={() => setSelectedReward(option.reward)}
+                checked={option.reward === selectedOption}
+                onOptionSelect={() => setSelectedOption(option.reward)}
                 onPledgeConfirm={(pledgeAmount: number) =>
                   onPledgeConfirm(option.reward, pledgeAmount)
                 }
