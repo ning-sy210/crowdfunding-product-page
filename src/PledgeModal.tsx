@@ -27,7 +27,7 @@ const PledgeModal = ({
         pledgeOption?.scrollIntoView({ behavior: "smooth" });
       }, 200);
     }
-    // 'defaultSelected' prop not included in dependency array to prevent auto scrolling
+    // 'selectedOption' prop not included in dependency array to prevent "snap" scrolling
     // when changing pledge options in the modal
   }, []);
 
