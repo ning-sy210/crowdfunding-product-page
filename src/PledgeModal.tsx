@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { HashLoader } from "react-spinners";
 
 import { inventoryStockType } from "./App";
 import { PledgeOptionProps } from "./PledgeSection";
@@ -109,6 +110,7 @@ const PledgeModalOption = ({
     >
       <section className="flex flex-col gap-y-5 px-6 pt-5 pb-7">
         <div className="flex items-center gap-x-4">
+          {/* TODO: Change appearance of radio button */}
           <input
             id={`${reward} input`}
             type="radio"
@@ -184,25 +186,41 @@ type PledgeConfirmationProps = {
 const PledgeConfirmationModal = ({
   onConfirmationClick,
 }: PledgeConfirmationProps) => {
+  const [isLoading, setIsLoading] = useState(true);
+
+  if (isLoading) {
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 3000);
+  }
+
   return (
-    <div className="fixed top-0 py-36 px-6 z-[2]">
+    <div className="fixed top-0 w-full py-36 px-6 z-[2]">
       <section className="flex flex-col text-center items-center gap-y-8 px-4 pt-8 pb-10 bg-white rounded-lg z-[2]">
-        <div className="flex flex-col gap-y-5 items-center">
-          <img src="./images/icon-check.svg" alt="check logo" />
-          <p className="text-h4 font-bold">Thanks for your support!</p>
-          <p className="leading-6 text-h5 text-neutral-2">
-            Your pledge brings us one step closer to sharing Mastercraft Bamboo
-            Monitor Riser worldwide. You will get an email once our campaign is
-            completed.
-          </p>
-        </div>
-        <button
-          type="button"
-          onClick={onConfirmationClick}
-          className="px-8 py-3 rounded-full text-white text-h5 font-bold bg-primary-1"
-        >
-          Got it!
-        </button>
+        {isLoading ? (
+          <div className="h-32 flex items-center">
+            <HashLoader color="#3cb4ac" />
+          </div>
+        ) : (
+          <>
+            <div className="flex flex-col gap-y-5 items-center">
+              <img src="./images/icon-check.svg" alt="check logo" />
+              <p className="text-h4 font-bold">Thanks for your support!</p>
+              <p className="leading-6 text-h5 text-neutral-2">
+                Your pledge brings us one step closer to sharing Mastercraft
+                Bamboo Monitor Riser worldwide. You will get an email once our
+                campaign is completed.
+              </p>
+            </div>
+            <button
+              type="button"
+              onClick={onConfirmationClick}
+              className="px-8 py-3 rounded-full text-white text-h5 font-bold bg-primary-1"
+            >
+              Got it!
+            </button>
+          </>
+        )}
       </section>
     </div>
   );
