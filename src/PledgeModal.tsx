@@ -20,6 +20,7 @@ const PledgeModal = ({
 }: PledgeModalProps) => {
   const [selectedOption, setSelectedOption] = useState(defaultSelected);
   const [showConfirmationModal, setShowConfirmationModal] = useState(false);
+  const [isSubmittingPledge, setIsSubmittingPledge] = useState(false);
 
   useEffect(() => {
     if (selectedOption !== null) {
@@ -33,8 +34,14 @@ const PledgeModal = ({
   }, []);
 
   function onPledgeConfirm(pledgeOption: PledgeRewards, pledgeAmount: number) {
-    makePledgeFor(pledgeOption, pledgeAmount);
+    setIsSubmittingPledge(true);
     setShowConfirmationModal(true);
+
+    // to simulate a put request
+    setTimeout(() => {
+      makePledgeFor(pledgeOption, pledgeAmount);
+      setIsSubmittingPledge(false);
+    }, 3000);
   }
 
   return (
@@ -42,7 +49,10 @@ const PledgeModal = ({
       <div className="fixed inset-0 bg-neutral-1 opacity-50 z-[1]"></div>
 
       {showConfirmationModal ? (
-        <PledgeConfirmationModal onConfirmationClick={closeModal} />
+        <PledgeConfirmationModal
+          isLoading={isSubmittingPledge}
+          onConfirmationClick={closeModal}
+        />
       ) : (
         <div className="fixed top-0 py-[120px] px-6 z-[2] h-full overflow-auto overscroll-contain">
           <section className="flex flex-col gap-y-6 px-6 py-7 rounded-lg bg-white z-[2]">
@@ -180,20 +190,14 @@ const PledgeModalOption = ({
 };
 
 type PledgeConfirmationProps = {
+  isLoading: boolean;
   onConfirmationClick: () => void;
 };
 
 const PledgeConfirmationModal = ({
+  isLoading,
   onConfirmationClick,
 }: PledgeConfirmationProps) => {
-  const [isLoading, setIsLoading] = useState(true);
-
-  if (isLoading) {
-    setTimeout(() => {
-      setIsLoading(false);
-    }, 3000);
-  }
-
   return (
     <div className="fixed top-0 w-full py-36 px-6 z-[2]">
       <section className="flex flex-col text-center items-center gap-y-8 px-4 pt-8 pb-10 bg-white rounded-lg z-[2]">
