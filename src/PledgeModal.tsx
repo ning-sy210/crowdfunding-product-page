@@ -106,6 +106,7 @@ const PledgeModalOption = ({
   onPledgeConfirm,
 }: PledgeModalOptionInterface) => {
   const [pledgeAmount, setPledgeAmount] = useState(minPledgeAmt);
+
   const isPaidOption = minPledgeAmt > 0;
   const outOfStock = isPaidOption && stock === 0;
   const lowInStock = stock > 0 && stock <= 20;
