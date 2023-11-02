@@ -16,6 +16,18 @@ export type inventoryStockType = {
   [key: string]: number;
 };
 
+const navItems = [
+  {
+    label: "About",
+  },
+  {
+    label: "Discover",
+  },
+  {
+    label: "Get Started",
+  },
+];
+
 const App = () => {
   const inventoryStock: inventoryStockType = {};
 
@@ -24,6 +36,7 @@ const App = () => {
     inventoryStock[option.reward] = option.stock;
   }
 
+  const [showMobileNav, setShowMobileNav] = useState(false);
   const [pledgeModalState, setPledgeModalState] =
     useState<PledgeModalStateType>({
       showModal: false,
@@ -82,14 +95,52 @@ const App = () => {
     setProjectPledgeState(newProjectPledgeState);
   }
 
+  function renderMobileOpenNavMenuIcon() {
+    let src;
+    let alt;
+
+    if (showMobileNav) {
+      src = "./images/icon-close-menu.svg";
+      alt = "close nav menu icon";
+    } else {
+      src = "./images/icon-hamburger.svg";
+      alt = "open nav menu icon";
+    }
+    return (
+      <img
+        src={src}
+        alt={alt}
+        onClick={() => setShowMobileNav(!showMobileNav)}
+      />
+    );
+  }
+
   return (
     <div className="relative">
       <img src="./images/image-hero-mobile.jpg" title="mobile hero image" />
 
       <div className="absolute top-0 px-6 pb-20 flex flex-col gap-y-[164px]">
-        <header className="flex items-center justify-between py-5 text-white">
+        <header className="relative flex items-center justify-between py-5 text-white">
           <h1 className="font-bold text-h2">crowdfund</h1>
-          <img src="./images/icon-hamburger.svg" title="hamburger icon"></img>
+          {renderMobileOpenNavMenuIcon()}
+          {showMobileNav && (
+            <>
+              <div className="fixed inset-0 bg-black opacity-25 z-[1] pointer-events-none"></div>
+              <nav className="absolute left-0 right-0 top-[88px] rounded-lg bg-white text-black text-h4 font-medium z-[2] overflow-clip">
+                <ul>
+                  {navItems.map((item) => (
+                    <li
+                      key={item.label}
+                      onClick={() => setShowMobileNav(false)}
+                      className="px-6 py-[21px] hover:bg-stone-200 [&:not(:first-child)]:border-t [&:not(:first-child)]:border-slate-200"
+                    >
+                      <a>{item.label}</a>
+                    </li>
+                  ))}
+                </ul>
+              </nav>
+            </>
+          )}
         </header>
 
         <main className="flex flex-col gap-y-6">
