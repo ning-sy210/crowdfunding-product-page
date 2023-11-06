@@ -125,13 +125,15 @@ const App = () => {
           {renderMobileOpenNavMenuIcon()}
           {showMobileNav && (
             <>
-              <div className="fixed inset-0 bg-black opacity-25 z-[1] pointer-events-none"></div>
+              <div
+                className="fixed inset-0 bg-black opacity-25 z-[1]"
+                onClick={() => setShowMobileNav(false)}
+              ></div>
               <nav className="absolute left-0 right-0 top-[88px] rounded-lg bg-white text-black text-h4 font-medium z-[2] overflow-clip">
                 <ul>
                   {navItems.map((item) => (
                     <li
                       key={item.label}
-                      onClick={() => setShowMobileNav(false)}
                       className="px-6 py-[21px] hover:bg-stone-200 [&:not(:first-child)]:border-t [&:not(:first-child)]:border-slate-200"
                     >
                       <a>{item.label}</a>
