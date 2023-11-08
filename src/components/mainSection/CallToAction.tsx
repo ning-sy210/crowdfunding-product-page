@@ -1,7 +1,7 @@
 import { useState } from "react";
 
-import PledgeModal from "./pledgeModal/PledgeModal";
 import { inventoryStockType } from "./MainSection";
+import PledgeModal from "./pledgeModal/PledgeModal";
 
 import { PledgeRewards } from "../../constants/enums";
 
