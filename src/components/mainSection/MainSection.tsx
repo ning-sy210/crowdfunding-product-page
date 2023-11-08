@@ -1,10 +1,10 @@
 import { useState } from "react";
 
-import PledgeSection from "../../PledgeSection";
 import CallToAction from "./CallToAction";
+import PledgeSection from "./pledgeSection/PledgeSection";
 import ProjectPledgeProgress from "./projectPledgeProgress/ProjectPledgeProgress";
 
-import { PledgeRewards, pledgeOptions } from "../../constants/enums";
+import { PledgeRewards, paidPledgeOptions } from "../../constants/enums";
 
 export type inventoryStockType = {
   [key: string]: number;
@@ -12,11 +12,9 @@ export type inventoryStockType = {
 
 const MainSection = () => {
   const inventoryStock: inventoryStockType = {};
-
-  for (const option of pledgeOptions) {
-    if (option.reward === PledgeRewards.NONE) continue;
-    inventoryStock[option.reward] = option.stock;
-  }
+  paidPledgeOptions.forEach(
+    (option) => (inventoryStock[option.reward] = option.stock)
+  );
 
   const [projectPledgeState, setProjectPledgeState] = useState({
     backedAmount: 89914,

@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import PledgeModal from "../../PledgeModal";
+import PledgeModal from "./pledgeModal/PledgeModal";
 import { inventoryStockType } from "./MainSection";
 
 import { PledgeRewards } from "../../constants/enums";
@@ -41,7 +41,6 @@ const CallToAction = ({ inventoryStock, makePledgeFor }: CallToActionProps) => {
 
       {showPledgeModal && (
         <PledgeModal
-          defaultSelected={null}
           closeModal={() => setShowPledgeModal(false)}
           inventoryStock={inventoryStock}
           makePledgeFor={makePledgeFor}
