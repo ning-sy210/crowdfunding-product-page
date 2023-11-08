@@ -1,17 +1,42 @@
-import { inventoryStockType } from "./App";
+import { useState } from "react";
+
+import PledgeModal from "./PledgeModal";
+import { inventoryStockType } from "./components/mainSection/MainSection";
+
 import { PledgeRewards, pledgeOptions } from "./constants/enums";
 
 type PledgeSectionProps = {
   inventoryStock: inventoryStockType;
-  selectRewardOnClick: (reward: PledgeRewards) => void;
+  makePledgeFor: (pledgeOption: PledgeRewards, pledgeAmount: number) => void;
 };
 
 const PledgeSection = ({
   inventoryStock,
-  selectRewardOnClick,
+  makePledgeFor,
 }: PledgeSectionProps) => {
+  const [pledgeModalDefaultSelected, setPledgeModalDefaultSelected] =
+    useState<null | PledgeRewards>(null);
+
   return (
-    <>
+    <section className="flex flex-col gap-y-6 pt-10 px-6 pb-9 bg-white rounded-lg border border-slate-100">
+      <section className="flex flex-col gap-y-6">
+        <h2 className="text-h4 font-bold">About this project</h2>
+        <div className="flex flex-col gap-y-[inherit] text-h5 leading-6 text-neutral-2">
+          <p>
+            The Mastercraft Bamboo Monitor Riser is a sturdy and stylish
+            platform that elevates your screen to a more comfortable viewing
+            height. Placing your monitor at eye level has the potential to
+            improve your posture and make you more comfortable while at work,
+            helping you stay focused on the task at hand.
+          </p>
+          <p>
+            Featuring artisan craftsmanship, the simplicity of design creates
+            extra desk space below your computer to allow notepads, pens, and
+            USB sticks to be stored under the stand.
+          </p>
+        </div>
+      </section>
+
       {pledgeOptions.map(
         (option) =>
           option.minPledgeAmt > 0 && (
@@ -21,11 +46,22 @@ const PledgeSection = ({
               minPledgeAmt={option.minPledgeAmt}
               desc={option.desc}
               stock={inventoryStock[option.reward]}
-              selectRewardOnClick={() => selectRewardOnClick(option.reward)}
+              selectRewardOnClick={() =>
+                setPledgeModalDefaultSelected(option.reward)
+              }
             />
           )
       )}
-    </>
+
+      {pledgeModalDefaultSelected && (
+        <PledgeModal
+          closeModal={() => setPledgeModalDefaultSelected(null)}
+          defaultSelected={pledgeModalDefaultSelected}
+          inventoryStock={inventoryStock}
+          makePledgeFor={makePledgeFor}
+        />
+      )}
+    </section>
   );
 };
 

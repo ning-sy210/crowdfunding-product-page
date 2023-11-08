@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { HashLoader } from "react-spinners";
 
-import { inventoryStockType } from "./App";
 import { PledgeOptionProps } from "./PledgeSection";
+import { inventoryStockType } from "./components/mainSection/MainSection";
 import { PledgeRewards, pledgeOptions } from "./constants/enums";
 
 type PledgeModalProps = {
@@ -54,7 +54,7 @@ const PledgeModal = ({
           onConfirmationClick={closeModal}
         />
       ) : (
-        <div className="fixed top-0 py-[120px] px-6 z-[2] h-full overflow-auto overscroll-contain">
+        <div className="fixed top-0 left-0 right-0 py-[120px] px-6 z-[2] h-full overflow-auto overscroll-contain">
           <section className="flex flex-col gap-y-6 px-6 py-7 rounded-lg bg-white z-[2]">
             <div className="flex items-center justify-between">
               <h2 className="text-h4 font-bold">Back this project</h2>
@@ -201,7 +201,7 @@ const PledgeConfirmationModal = ({
   onConfirmationClick,
 }: PledgeConfirmationProps) => {
   return (
-    <div className="fixed top-0 w-full py-36 px-6 z-[2]">
+    <div className="fixed top-0 left-0 right-0 w-full py-36 px-6 z-[2]">
       <section className="flex flex-col text-center items-center gap-y-8 px-4 pt-8 pb-10 bg-white rounded-lg z-[2]">
         {isLoading ? (
           <div className="h-32 flex items-center">
