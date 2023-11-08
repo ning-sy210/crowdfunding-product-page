@@ -66,10 +66,12 @@ const PledgeModal = ({
                 />
               </button>
             </div>
+
             <p className="text-h5 text-neutral-2 leading-6">
               Want to support us in bringing Mastercraft Bamboo Monitor Riser
               out in the world?
             </p>
+
             {pledgeOptions.map((option) => (
               <PledgeModalOption
                 key={option.reward}
