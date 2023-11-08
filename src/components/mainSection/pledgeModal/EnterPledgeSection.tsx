@@ -43,7 +43,7 @@ const EnterPledgeSection = ({
         <span className="absolute top-[13px] left-6 text-h5 font-bold text-stone-400">
           $
         </span>
-        {/* TODO: add validation for pledge amount */}
+
         <input
           type="number"
           defaultValue={minPledgeAmount.toString()}
