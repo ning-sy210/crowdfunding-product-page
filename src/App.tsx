@@ -1,5 +1,17 @@
+import AppHeader from "./components/appHeader/AppHeader";
+import MainSection from "./components/mainSection/MainSection";
+
 const App = () => {
-  return <div>App</div>;
+  return (
+    <div className="relative">
+      <img src="./images/image-hero-mobile.jpg" title="mobile hero image" />
+
+      <div className="absolute top-0 px-6 pb-20 flex flex-col gap-y-[164px]">
+        <AppHeader />
+        <MainSection />
+      </div>
+    </div>
+  );
 };
 
 export default App;

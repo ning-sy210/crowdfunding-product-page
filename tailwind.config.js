@@ -10,11 +10,11 @@ export default {
       sans: ["Commissioner", "sans-serif"],
     },
     fontSize: {
-      h1: "1.953rem",
+      h1: "2rem",
       h2: "1.563rem",
       h3: "1.25rem",
-      h4: "1rem",
-      h5: "0.8rem",
+      h4: "1.13rem",
+      h5: "0.87rem",
     },
     fontWeight: {
       normal: "400",
