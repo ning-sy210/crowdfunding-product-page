@@ -25,7 +25,7 @@ const AppHeader = () => {
   }
 
   return (
-    <header className="flex flex-col py-5 text-white">
+    <header className="flex flex-col w-full py-5 text-white">
       <div className="flex items-center justify-between">
         <h1 className="font-bold text-h2">crowdfund</h1>
         {renderMobileOpenNavMenuIcon()}

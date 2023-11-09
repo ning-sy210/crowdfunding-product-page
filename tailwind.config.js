@@ -6,6 +6,9 @@ export default {
       mb: "375px",
       dt: "1440px",
     },
+    maxWidth: {
+      card: "728px",
+    },
     fontFamily: {
       sans: ["Commissioner", "sans-serif"],
     },

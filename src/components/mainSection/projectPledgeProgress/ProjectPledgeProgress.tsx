@@ -34,7 +34,7 @@ const ProjectPledgeProgress = ({
   ];
 
   return (
-    <section className="flex flex-col gap-y-6 items-center text-center pt-7 px-6 pb-9 bg-white rounded-lg border border-slate-100">
+    <section className="flex flex-col gap-y-6 items-center text-center pt-7 px-6 pb-9 bg-white rounded-lg border border-slate-100 max-w-card">
       {progressTrackers.map((tracker, i) => (
         <Fragment key={i}>
           <ProgressTracker header={tracker.header} subText={tracker.subText} />

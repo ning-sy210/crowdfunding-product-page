@@ -14,7 +14,7 @@ const CallToAction = ({ inventoryStock, makePledgeFor }: CallToActionProps) => {
   const [showPledgeModal, setShowPledgeModal] = useState(false);
 
   return (
-    <section className="relative flex flex-col gap-y-5 items-center text-center pt-[50px] px-6 pb-10 bg-white rounded-lg border border-slate-100">
+    <section className="relative flex flex-col gap-y-5 items-center text-center pt-[50px] px-6 pb-10 bg-white rounded-lg border border-slate-100 max-w-card">
       <img
         src="./images/logo-mastercraft.svg"
         title="mastercraft logo"
@@ -30,7 +30,7 @@ const CallToAction = ({ inventoryStock, makePledgeFor }: CallToActionProps) => {
         <button
           type="button"
           onClick={() => setShowPledgeModal(true)}
-          className="font-medium text-white rounded-full w-[77%] bg-primary-1 "
+          className="font-medium text-white rounded-full w-[77%] max-w-[216px] bg-primary-1"
         >
           Back this project
         </button>
