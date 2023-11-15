@@ -4,7 +4,7 @@ export default {
   theme: {
     screens: {
       mb: "375px",
-      tablet: "768px",
+      tablet: "750px",
       dt: "1440px",
     },
     maxWidth: {
