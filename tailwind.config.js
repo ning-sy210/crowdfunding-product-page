@@ -4,6 +4,7 @@ export default {
   theme: {
     screens: {
       mb: "375px",
+      tablet: "768px",
       dt: "1440px",
     },
     maxWidth: {
@@ -30,6 +31,10 @@ export default {
         "primary-2": "hsl(176, 72%, 28%)",
         "neutral-1": "hsl(0, 0%, 0%)",
         "neutral-2": "hsl(0, 0%, 48%)",
+      },
+      backgroundImage: {
+        "hero-mobile": "url('./images/image-hero-mobile.jpg')",
+        "hero-desktop": "url('./images/image-hero-desktop.jpg')",
       },
     },
   },
