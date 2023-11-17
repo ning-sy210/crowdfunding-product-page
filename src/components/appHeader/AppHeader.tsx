@@ -4,7 +4,7 @@ import Navbar from "./Navbar";
 const AppHeader = () => {
   const [showMobileNav, setShowMobileNav] = useState(false);
 
-  function renderMobileOpenNavMenuIcon() {
+  function mobileNavMenuIcon() {
     let src;
     let alt;
 
@@ -20,18 +20,19 @@ const AppHeader = () => {
         src={src}
         alt={alt}
         onClick={() => setShowMobileNav(!showMobileNav)}
+        className="tablet:hidden"
       />
     );
   }
 
   return (
-    <header className="flex flex-col w-full py-5 text-white">
-      <div className="flex items-center justify-between">
-        <h1 className="font-bold text-h2">crowdfund</h1>
-        {renderMobileOpenNavMenuIcon()}
-      </div>
-
-      {showMobileNav && <Navbar closeNavbar={() => setShowMobileNav(false)} />}
+    <header className="relative flex justify-between items-center w-full tablet:w-4/5 py-5 text-white tablet:py-10">
+      <h1 className="font-bold text-h2">crowdfund</h1>
+      <Navbar
+        isHidden={!showMobileNav}
+        closeMobileNavMenu={() => setShowMobileNav(false)}
+      />
+      {mobileNavMenuIcon()}
     </header>
   );
 };
