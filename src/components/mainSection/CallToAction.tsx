@@ -36,7 +36,7 @@ const CallToAction = ({ inventoryStock, makePledgeFor }: CallToActionProps) => {
         <button
           type="button"
           onClick={() => setShowPledgeModal(true)}
-          className="font-medium text-white rounded-full w-[77%] max-w-[216px] bg-primary-1 tablet:max-w-[204px]"
+          className="font-medium text-white rounded-full w-[77%] max-w-[216px] bg-primary-1 hover:bg-teal-400 active:bg-primary-2 transition-colors tablet:max-w-[204px]"
         >
           Back this project
         </button>
