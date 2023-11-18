@@ -1,17 +1,20 @@
 import AppHeader from "./components/appHeader/AppHeader";
 import MainSection from "./components/mainSection/MainSection";
 
+import MobileHeroImg from "./assets/images/image-hero-mobile.jpg";
+import DesktopHeroImg from "./assets/images/image-hero-desktop.jpg";
+
 const App = () => {
   return (
     <div className="relative">
       <img
         className="tablet:hidden"
-        src="./images/image-hero-mobile.jpg"
+        src={MobileHeroImg}
         title="mobile hero image"
       />
       <img
         className="hidden tablet:block"
-        src="./images/image-hero-desktop.jpg"
+        src={DesktopHeroImg}
         title="desktop hero image"
       />
 

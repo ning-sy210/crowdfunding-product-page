@@ -5,6 +5,7 @@ import PledgeConfirmationModal from "./PledgeConfirmationModal";
 import PledgeModalOption from "./PledgeModalOption";
 
 import { PledgeRewards, pledgeOptions } from "../../../constants/enums";
+import CloseModalIcon from "../../../assets/images/icon-close-modal.svg";
 
 type PledgeModalProps = {
   defaultSelected?: PledgeRewards;
@@ -60,10 +61,7 @@ const PledgeModal = ({
             <div className="flex items-center justify-between">
               <h2 className="text-4 font-bold">Back this project</h2>
               <button type="button" onClick={closeModal}>
-                <img
-                  src="./images/icon-close-modal.svg"
-                  alt="close modal icon"
-                />
+                <img src={CloseModalIcon} alt="close modal icon" />
               </button>
             </div>
 

@@ -1,6 +1,9 @@
 import { useState } from "react";
 import Navbar from "./Navbar";
 
+import HamburgerMenuIcon from "../../assets/images/icon-hamburger.svg";
+import CloseMenuIcon from "../../assets/images/icon-close-menu.svg";
+
 const AppHeader = () => {
   const [showMobileNav, setShowMobileNav] = useState(false);
 
@@ -9,10 +12,10 @@ const AppHeader = () => {
     let alt;
 
     if (showMobileNav) {
-      src = "./images/icon-close-menu.svg";
+      src = CloseMenuIcon;
       alt = "close nav menu icon";
     } else {
-      src = "./images/icon-hamburger.svg";
+      src = HamburgerMenuIcon;
       alt = "open nav menu icon";
     }
     return (

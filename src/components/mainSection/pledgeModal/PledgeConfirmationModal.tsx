@@ -1,4 +1,5 @@
 import { HashLoader } from "react-spinners";
+import CheckmarkIcon from "../../../assets/images/icon-check.svg";
 
 type PledgeConfirmationProps = {
   isLoading: boolean;
@@ -19,7 +20,7 @@ const PledgeConfirmationModal = ({
         ) : (
           <>
             <div className="flex flex-col gap-y-5 items-center">
-              <img src="./images/icon-check.svg" alt="check logo" />
+              <img src={CheckmarkIcon} alt="check logo" />
               <p className="text-4 font-bold">Thanks for your support!</p>
               <p className="leading-6 text-5 text-neutral-2">
                 Your pledge brings us one step closer to sharing Mastercraft

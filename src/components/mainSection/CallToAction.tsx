@@ -4,6 +4,8 @@ import { inventoryStockType } from "./MainSection";
 import PledgeModal from "./pledgeModal/PledgeModal";
 
 import { PledgeRewards } from "../../constants/enums";
+import MasterCraftLogo from "../../assets/images/logo-mastercraft.svg";
+import BookmarkIcon from "../../assets/images/icon-bookmark.svg";
 
 type CallToActionProps = {
   inventoryStock: inventoryStockType;
@@ -20,7 +22,7 @@ const CallToAction = ({ inventoryStock, makePledgeFor }: CallToActionProps) => {
       tablet:pt-[3.75rem] tablet:px-11"
     >
       <img
-        src="./images/logo-mastercraft.svg"
+        src={MasterCraftLogo}
         title="mastercraft logo"
         className="absolute top-[-28px]"
       />
@@ -48,7 +50,7 @@ const CallToAction = ({ inventoryStock, makePledgeFor }: CallToActionProps) => {
             {isBookmarked ? "Bookmarked" : "Bookmark"}
           </div>
           <img
-            src="./images/icon-bookmark.svg"
+            src={BookmarkIcon}
             title="bookmark icon"
             className="block tablet:absolute tablet:top-0"
           />
