@@ -46,8 +46,8 @@ const NavItem = ({ label }: NavItemProps) => {
   return (
     <li
       key={label}
-      className="hover:bg-stone-200 [&:not(:first-child)]:border-t [&:not(:first-child)]:border-slate-200
-      tablet:hover:bg-transparent tablet:[&:not(:first-child)]:border-none"
+      className="hover:bg-stone-200 [&:not(:first-child)]:border-t [&:not(:first-child)]:border-slate-200 cursor-pointer 
+      tablet:hover:bg-transparent tablet:[&:not(:first-child)]:border-none tablet:active:underline"
     >
       <a>
         <div className="px-6 py-[21px] tablet:p-0">{label}</div>
