@@ -5,7 +5,6 @@ import PledgeModal from "./pledgeModal/PledgeModal";
 
 import { PledgeRewards } from "../../constants/enums";
 import MasterCraftLogo from "../../assets/images/logo-mastercraft.svg";
-import BookmarkIcon from "../../assets/images/icon-bookmark.svg";
 
 type CallToActionProps = {
   inventoryStock: inventoryStockType;
@@ -46,14 +45,34 @@ const CallToAction = ({ inventoryStock, makePledgeFor }: CallToActionProps) => {
           className={`relative${isBookmarked ? " " : ""}`}
           onClick={() => setIsBookmarked((prev) => !prev)}
         >
-          <div className="hidden pl-[4.5rem] pr-6 py-4 rounded-full bg-stone-100 text-neutral-2 font-bold tablet:block">
+          <div
+            className={`hidden pl-[4.5rem] pr-6 py-4 rounded-full bg-stone-100 text-neutral-2${
+              isBookmarked ? " text-primary-2" : ""
+            } font-bold tablet:block`}
+          >
             {isBookmarked ? "Bookmarked" : "Bookmark"}
           </div>
-          <img
-            src={BookmarkIcon}
-            title="bookmark icon"
+          <svg
+            width="56"
+            height="56"
+            xmlns="http://www.w3.org/2000/svg"
             className="block tablet:absolute tablet:top-0"
-          />
+          >
+            <g fill="none" fillRule="evenodd">
+              <circle
+                fill="#2F2F2F"
+                cx="28"
+                cy="28"
+                r="28"
+                className={isBookmarked ? "fill-primary-2" : ""}
+              />
+              <path
+                fill="#B1B1B1"
+                d="M23 19v18l5-5.058L33 37V19z"
+                className={isBookmarked ? "fill-white" : ""}
+              />
+            </g>
+          </svg>
         </button>
       </div>
 
