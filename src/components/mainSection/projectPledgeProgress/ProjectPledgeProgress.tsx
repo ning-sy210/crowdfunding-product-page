@@ -28,14 +28,14 @@ const ProjectPledgeProgress = ({
           subText={`of $${backedAmountGoal.toLocaleString()} backed`}
         />
 
-        <div className="w-[76px] h-[1px] bg-slate-300 tablet:w-[1px] tablet:h-16 tablet:ml-[3.25rem] tablet:mr-12"></div>
+        <div className="w-[76px] h-[1px] bg-slate-300 tablet:w-[1px] tablet:h-16 tablet:ml-[2.7rem] tablet:mr-12"></div>
 
         <ProgressTracker
           header={backersThusFar.toLocaleString()}
           subText="total backers"
         />
 
-        <div className="w-[76px] h-[1px] bg-slate-300 tablet:w-[1px] tablet:h-16 tablet:ml-24 tablet:mr-12"></div>
+        <div className="w-[76px] h-[1px] bg-slate-300 tablet:w-[1px] tablet:h-16 tablet:ml-[90px] tablet:mr-12"></div>
 
         <ProgressTracker header={daysLeft} subText="days left" />
       </div>

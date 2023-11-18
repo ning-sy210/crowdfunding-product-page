@@ -20,6 +20,7 @@ export default {
       3: "1.25rem",
       4: "1.13rem",
       4.5: "1rem",
+      4.51: "0.95rem",
       5: "0.87rem",
     },
     fontWeight: {
