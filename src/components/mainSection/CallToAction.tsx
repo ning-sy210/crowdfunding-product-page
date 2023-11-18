@@ -17,8 +17,8 @@ const CallToAction = ({ inventoryStock, makePledgeFor }: CallToActionProps) => {
 
   return (
     <section
-      className="relative flex flex-col gap-y-5 items-center text-center pt-[50px] px-6 pb-10 bg-white rounded-lg border border-slate-100 max-w-card
-      tablet:pt-[3.75rem] tablet:px-11"
+      className="relative flex flex-col gap-y-5 items-center text-center pt-[50px] px-card pb-10 bg-white rounded-lg border border-slate-100 max-w-card
+      tablet:pt-[3.75rem] tablet:px-card-tablet"
     >
       <img
         src={MasterCraftLogo}

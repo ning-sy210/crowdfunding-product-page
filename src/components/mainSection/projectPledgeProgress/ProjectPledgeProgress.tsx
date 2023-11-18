@@ -19,8 +19,8 @@ const ProjectPledgeProgress = ({
 
   return (
     <section
-      className="flex flex-col gap-y-6 items-center text-center pt-7 px-6 pb-9 bg-white rounded-lg border border-slate-100 max-w-card
-    tablet:text-start tablet:items-start tablet:pt-11 tablet:pb-12 tablet:px-11 tablet:gap-y-9"
+      className="flex flex-col gap-y-6 items-center text-center pt-7 px-card pb-9 bg-white rounded-lg border border-slate-100 max-w-card
+    tablet:text-start tablet:items-start tablet:pt-11 tablet:pb-12 tablet:px-card-tablet tablet:gap-y-9"
     >
       <div className="flex flex-col items-center gap-y-6 tablet:flex-row">
         <ProgressTracker

@@ -19,7 +19,7 @@ const PledgeSection = ({
     useState<null | PledgeRewards>(null);
 
   return (
-    <section className="flex flex-col gap-y-6 pt-10 px-6 pb-9 bg-white rounded-lg border border-slate-100 max-w-card">
+    <section className="flex flex-col gap-y-6 pt-10 px-card pb-9 bg-white rounded-lg border border-slate-100 max-w-card">
       <section className="flex flex-col gap-y-6">
         <h2 className="text-4 font-bold">About this project</h2>
         <div className="flex flex-col gap-y-[inherit] text-5 leading-6 text-neutral-2">

@@ -39,6 +39,10 @@ export default {
         "hero-mobile": "url('./images/image-hero-mobile.jpg')",
         "hero-desktop": "url('./images/image-hero-desktop.jpg')",
       },
+      padding: {
+        card: "1.5rem",
+        "card-tablet": "2.75rem",
+      },
     },
   },
   plugins: [],
