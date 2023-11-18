@@ -1,6 +1,5 @@
-import { Fragment } from "react";
 import ProgressBar from "./ProgressBar";
-import ProgressTracker, { ProgressTrackerProps } from "./ProgressTracker";
+import ProgressTracker from "./ProgressTracker";
 
 type ProjectPledgeProgressProps = {
   backedAmountThusFar: number;
@@ -18,31 +17,29 @@ const ProjectPledgeProgress = ({
     (backedAmountThusFar / backedAmountGoal) * 100
   );
 
-  const progressTrackers: ProgressTrackerProps[] = [
-    {
-      header: `$${backedAmountThusFar.toLocaleString()}`,
-      subText: `of $${backedAmountGoal.toLocaleString()} backed`,
-    },
-    {
-      header: backersThusFar.toLocaleString(),
-      subText: "total backers",
-    },
-    {
-      header: daysLeft,
-      subText: "days left",
-    },
-  ];
-
   return (
-    <section className="flex flex-col gap-y-6 items-center text-center pt-7 px-6 pb-9 bg-white rounded-lg border border-slate-100 max-w-card">
-      {progressTrackers.map((tracker, i) => (
-        <Fragment key={i}>
-          <ProgressTracker header={tracker.header} subText={tracker.subText} />
-          {i !== progressTrackers.length - 1 && (
-            <div className="w-[76px] h-[1px] bg-slate-300"></div>
-          )}
-        </Fragment>
-      ))}
+    <section
+      className="flex flex-col gap-y-6 items-center text-center pt-7 px-6 pb-9 bg-white rounded-lg border border-slate-100 max-w-card
+    tablet:text-start tablet:items-start tablet:pt-11 tablet:pb-12 tablet:px-11 tablet:gap-y-9"
+    >
+      <div className="flex flex-col items-center gap-y-6 tablet:flex-row">
+        <ProgressTracker
+          header={`$${backedAmountThusFar.toLocaleString()}`}
+          subText={`of $${backedAmountGoal.toLocaleString()} backed`}
+        />
+
+        <div className="w-[76px] h-[1px] bg-slate-300 tablet:w-[1px] tablet:h-16 tablet:ml-[3.25rem] tablet:mr-12"></div>
+
+        <ProgressTracker
+          header={backersThusFar.toLocaleString()}
+          subText="total backers"
+        />
+
+        <div className="w-[76px] h-[1px] bg-slate-300 tablet:w-[1px] tablet:h-16 tablet:ml-24 tablet:mr-12"></div>
+
+        <ProgressTracker header={daysLeft} subText="days left" />
+      </div>
+
       <ProgressBar progress={crowdFundingProgress} />
     </section>
   );
