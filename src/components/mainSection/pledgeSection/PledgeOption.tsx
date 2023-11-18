@@ -48,9 +48,11 @@ const PledgeOption = ({
         <button
           type="button"
           onClick={selectRewardOnClick}
-          className={`w-40 h-12 ${
-            outOfStock ? "bg-zinc-400" : "bg-primary-1"
-          } text-white font-medium rounded-full tablet:text-4.51 hover:bg-teal-400 active:bg-primary-2 transition-colors`}
+          className={`w-40 h-12${
+            outOfStock
+              ? " bg-zinc-400"
+              : " bg-primary-1 hover:bg-teal-400 active:bg-primary-2"
+          } text-white font-medium rounded-full tablet:text-4.51 transition-colors`}
           disabled={outOfStock}
         >
           {outOfStock ? "Out of Stock" : "Select Reward"}
