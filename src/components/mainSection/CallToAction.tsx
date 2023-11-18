@@ -42,7 +42,7 @@ const CallToAction = ({ inventoryStock, makePledgeFor }: CallToActionProps) => {
         </button>
         <button
           type="button"
-          className={`relative${isBookmarked ? " " : ""}`}
+          className="relative group"
           onClick={() => setIsBookmarked((prev) => !prev)}
         >
           <div
@@ -64,7 +64,9 @@ const CallToAction = ({ inventoryStock, makePledgeFor }: CallToActionProps) => {
                 cx="28"
                 cy="28"
                 r="28"
-                className={isBookmarked ? "fill-primary-2" : ""}
+                className={`group-active:fill-neutral-2 group-hover:fill-zinc-600 transition-colors${
+                  isBookmarked ? " fill-primary-2" : ""
+                }`}
               />
               <path
                 fill="#B1B1B1"
