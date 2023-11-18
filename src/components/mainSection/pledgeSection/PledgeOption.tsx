@@ -39,7 +39,9 @@ const PledgeOption = ({
         <span className="text-1 font-bold leading-[initial]">
           {stock.toLocaleString()}
         </span>
-        <span className="text-[15px] text-neutral-2">left</span>
+        <span className="relative top-[1px] text-[15px] text-neutral-2">
+          left
+        </span>
       </p>
       <button
         type="button"
