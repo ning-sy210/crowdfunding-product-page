@@ -20,8 +20,8 @@ const PledgeConfirmationModal = ({
           <>
             <div className="flex flex-col gap-y-5 items-center">
               <img src="./images/icon-check.svg" alt="check logo" />
-              <p className="text-h4 font-bold">Thanks for your support!</p>
-              <p className="leading-6 text-h5 text-neutral-2">
+              <p className="text-4 font-bold">Thanks for your support!</p>
+              <p className="leading-6 text-5 text-neutral-2">
                 Your pledge brings us one step closer to sharing Mastercraft
                 Bamboo Monitor Riser worldwide. You will get an email once our
                 campaign is completed.
@@ -30,7 +30,7 @@ const PledgeConfirmationModal = ({
             <button
               type="button"
               onClick={closeModal}
-              className="px-8 py-3 rounded-full text-white text-h5 font-bold bg-primary-1"
+              className="px-8 py-3 rounded-full text-white text-5 font-bold bg-primary-1"
             >
               Got it!
             </button>

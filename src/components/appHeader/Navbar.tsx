@@ -25,8 +25,8 @@ const Navbar = ({ isHidden, closeMobileNavMenu }: NavbarProps) => {
         onClick={closeMobileNavMenu}
       ></div>
       <nav
-        className={`${hidden}absolute w-full top-[88px] rounded-lg bg-white text-black text-h4 font-medium z-[2] overflow-clip 
-        tablet:block tablet:static tablet:w-auto tablet:bg-transparent tablet:text-white tablet:text-h5 tablet:font-normal`}
+        className={`${hidden}absolute w-full top-[88px] rounded-lg bg-white text-black text-4 font-medium z-[2] overflow-clip 
+        tablet:block tablet:static tablet:w-auto tablet:bg-transparent tablet:text-white tablet:text-5 tablet:font-normal`}
       >
         <ul className="tablet:flex tablet:gap-x-8">
           {navItems.map((item) => (

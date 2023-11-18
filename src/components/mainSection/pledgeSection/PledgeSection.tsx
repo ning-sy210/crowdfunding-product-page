@@ -21,8 +21,8 @@ const PledgeSection = ({
   return (
     <section className="flex flex-col gap-y-6 pt-10 px-6 pb-9 bg-white rounded-lg border border-slate-100 max-w-card">
       <section className="flex flex-col gap-y-6">
-        <h2 className="text-h4 font-bold">About this project</h2>
-        <div className="flex flex-col gap-y-[inherit] text-h5 leading-6 text-neutral-2">
+        <h2 className="text-4 font-bold">About this project</h2>
+        <div className="flex flex-col gap-y-[inherit] text-5 leading-6 text-neutral-2">
           <p>
             The Mastercraft Bamboo Monitor Riser is a sturdy and stylish
             platform that elevates your screen to a more comfortable viewing

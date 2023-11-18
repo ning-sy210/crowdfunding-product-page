@@ -58,7 +58,7 @@ const PledgeModal = ({
         <div className="fixed top-0 left-0 right-0 py-[120px] px-6 z-[2] h-full overflow-auto overscroll-contain">
           <section className="flex flex-col gap-y-6 px-6 py-7 rounded-lg bg-white z-[2]">
             <div className="flex items-center justify-between">
-              <h2 className="text-h4 font-bold">Back this project</h2>
+              <h2 className="text-4 font-bold">Back this project</h2>
               <button type="button" onClick={closeModal}>
                 <img
                   src="./images/icon-close-modal.svg"
@@ -67,7 +67,7 @@ const PledgeModal = ({
               </button>
             </div>
 
-            <p className="text-h5 text-neutral-2 leading-6">
+            <p className="text-5 text-neutral-2 leading-6">
               Want to support us in bringing Mastercraft Bamboo Monitor Riser
               out in the world?
             </p>

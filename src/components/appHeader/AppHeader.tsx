@@ -27,7 +27,7 @@ const AppHeader = () => {
 
   return (
     <header className="relative flex justify-between items-center w-full tablet:w-4/5 py-5 text-white tablet:py-10">
-      <h1 className="font-bold text-h2">crowdfund</h1>
+      <h1 className="font-bold text-2">crowdfund</h1>
       <Navbar
         isHidden={!showMobileNav}
         closeMobileNavMenu={() => setShowMobileNav(false)}
