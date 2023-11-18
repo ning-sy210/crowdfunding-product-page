@@ -15,9 +15,11 @@ export default {
     },
     fontSize: {
       1: "2rem",
+      1.5: "1.75rem",
       2: "1.563rem",
       3: "1.25rem",
       4: "1.13rem",
+      4.5: "1rem",
       5: "0.87rem",
     },
     fontWeight: {
