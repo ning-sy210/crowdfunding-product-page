@@ -20,39 +20,42 @@ const PledgeOption = ({
 
   return (
     <section
-      className={`flex flex-col items-start p-[22px] gap-y-5 border border-slate-300 rounded-lg${
+      className={`flex flex-col p-[22px] gap-y-5 border border-slate-300 rounded-lg${
         outOfStock ? " opacity-50" : ""
-      }`}
+      } tablet:p-8`}
     >
-      <section className="flex flex-col gap-y-1">
-        <h3 className="font-bold">{reward}</h3>
-        <p className="font-medium text-primary-1">
+      <section className="flex flex-col gap-y-1 tablet:flex-row tablet:justify-between tablet:items-center">
+        <h3 className="font-bold tablet:text-4">{reward}</h3>
+        <p className="font-medium text-primary-1 tablet:text-4.51">
           Pledge ${minPledgeAmount.toLocaleString()} or more
         </p>
       </section>
       <p className="text-neutral-2">{desc}</p>
-      <p
-        className={`flex items-center gap-x-2${
-          lowInStock ? " text-red-500" : ""
-        }`}
-      >
-        <span className="text-1 font-bold leading-[initial]">
-          {stock.toLocaleString()}
-        </span>
-        <span className="relative top-[1px] text-[15px] text-neutral-2">
-          left
-        </span>
-      </p>
-      <button
-        type="button"
-        onClick={selectRewardOnClick}
-        className={`w-40 h-12 ${
-          outOfStock ? "bg-zinc-400" : "bg-primary-1"
-        } text-white font-bold rounded-full`}
-        disabled={outOfStock}
-      >
-        {outOfStock ? "Out of Stock" : "Select Reward"}
-      </button>
+
+      <section className="flex flex-col gap-y-[inherit] tablet:flex-row tablet:items-center tablet:justify-between">
+        <p
+          className={`flex items-center gap-x-2${
+            lowInStock ? " text-red-500" : ""
+          }`}
+        >
+          <span className="text-1 font-bold leading-[initial]">
+            {stock.toLocaleString()}
+          </span>
+          <span className="relative top-[1px] text-[15px] text-neutral-2">
+            left
+          </span>
+        </p>
+        <button
+          type="button"
+          onClick={selectRewardOnClick}
+          className={`w-40 h-12 ${
+            outOfStock ? "bg-zinc-400" : "bg-primary-1"
+          } text-white font-medium rounded-full tablet:text-4.51 hover:bg-teal-400 active:bg-primary-2 transition-colors`}
+          disabled={outOfStock}
+        >
+          {outOfStock ? "Out of Stock" : "Select Reward"}
+        </button>
+      </section>
     </section>
   );
 };

@@ -18,7 +18,7 @@ const App = () => {
         title="desktop hero image"
       />
 
-      <div className="absolute top-0 left-0 right-0 px-6 pb-20 flex flex-col items-center gap-y-[164px] tablet:gap-y-[190px]">
+      <div className="absolute top-0 left-0 right-0 px-6 pb-20 flex flex-col items-center gap-y-[10.25rem] tablet:gap-y-[11.875] tablet:pb-[8.125rem]">
         <AppHeader />
         <MainSection />
       </div>
