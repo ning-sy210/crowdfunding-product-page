@@ -44,7 +44,9 @@ const PledgeModalOption = ({
             className="flex flex-col h-12 justify-center"
           >
             <div className="flex flex-col gap-y-1 justify-between">
-              <span className="text-5 font-bold">{reward}</span>
+              <span className="text-5 font-bold hover:cursor-pointer tablet:active:text-primary-1">
+                {reward}
+              </span>
 
               {/* Min pledge amount label */}
               {isPaidOption && (
