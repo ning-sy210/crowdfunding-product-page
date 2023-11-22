@@ -64,7 +64,7 @@ const CallToAction = ({ inventoryStock, makePledgeFor }: CallToActionProps) => {
                 cx="28"
                 cy="28"
                 r="28"
-                className={`group-active:fill-neutral-2 group-hover:fill-zinc-600 transition-colors${
+                className={`group-active:fill-neutral-2 tablet:group-hover:fill-zinc-600 transition-colors${
                   isBookmarked ? " fill-primary-2" : ""
                 }`}
               />
