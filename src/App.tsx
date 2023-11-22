@@ -13,7 +13,7 @@ const App = () => {
         title="mobile hero image"
       />
       <img
-        className="hidden tablet:block"
+        className="hidden tablet:block tablet:w-full"
         src={DesktopHeroImg}
         title="desktop hero image"
       />
