@@ -41,7 +41,7 @@ export default {
       },
       padding: {
         card: "1.5rem",
-        "card-tablet": "2.75rem",
+        "card-tablet": "2.8rem",
       },
     },
   },
