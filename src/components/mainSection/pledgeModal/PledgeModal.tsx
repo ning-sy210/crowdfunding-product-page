@@ -56,7 +56,7 @@ const PledgeModal = ({
           closeModal={closeModal}
         />
       ) : (
-        <div className="fixed inset-0 z-[2] h-full px-6 py-[120px] overflow-auto overscroll-contain">
+        <div className="fixed inset-0 z-[2] h-full px-6 py-[7.5rem] overflow-auto overscroll-contain tablet:py-[11.5rem]">
           <section className="m-auto flex flex-col gap-y-6 px-6 py-7 rounded-lg bg-white max-w-card">
             <div className="flex items-center justify-between">
               <h2 className="text-4 font-bold">Back this project</h2>
