@@ -63,7 +63,7 @@ const EnterPledgeSection = ({
           type="button"
           onClick={() => validateInput(pledgeAmount)}
           className="bg-primary-1 text-white rounded-full w-1/2 max-w-[120px] py-[13px] text-9 font-bold transition-colors  
-          tablet:py-2 tablet:max-w-[10rem] tablet:hover:bg-teal-400 tablet:active:bg-primary-2"
+          tablet:py-2 tablet:max-w-[10rem] tablet:hover:bg-teal-400 tablet:active:bg-primary-2 tablet:leading-8"
         >
           Continue
         </button>
