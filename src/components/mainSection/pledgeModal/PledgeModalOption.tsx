@@ -50,7 +50,13 @@ const PledgeModalOption = ({
             className="flex flex-col h-12 justify-center"
           >
             <div className="flex flex-col gap-y-1 justify-between tablet:flex-row tablet:gap-x-4 tablet:justify-normal">
-              <span className="text-9 font-bold hover:cursor-pointer tablet:active:text-primary-1 tablet:text-7">
+              <span
+                className={`text-9 font-bold tablet:text-7 ${
+                  !outOfStock
+                    ? " hover:cursor-pointer tablet:active:text-primary-1"
+                    : ""
+                }`}
+              >
                 {reward}
               </span>
 
