@@ -5,10 +5,10 @@ export type ProgressTrackerProps = {
 
 const ProgressTracker = ({ header, subText }: ProgressTrackerProps) => {
   return (
-    <section>
-      <p className="text-h1 font-bold">{header}</p>
-      <p className="leading-6 text-h5 text-neutral-2">{subText}</p>
-    </section>
+    <div>
+      <p className="text-1 font-bold">{header}</p>
+      <p className="leading-6 text-9 text-neutral-2 tablet:text-8">{subText}</p>
+    </div>
   );
 };
 

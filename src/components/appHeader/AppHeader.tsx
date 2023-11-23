@@ -1,18 +1,21 @@
 import { useState } from "react";
 import Navbar from "./Navbar";
 
+import HamburgerMenuIcon from "../../assets/images/icon-hamburger.svg";
+import CloseMenuIcon from "../../assets/images/icon-close-menu.svg";
+
 const AppHeader = () => {
   const [showMobileNav, setShowMobileNav] = useState(false);
 
-  function renderMobileOpenNavMenuIcon() {
+  function mobileNavMenuIcon() {
     let src;
     let alt;
 
     if (showMobileNav) {
-      src = "./images/icon-close-menu.svg";
+      src = CloseMenuIcon;
       alt = "close nav menu icon";
     } else {
-      src = "./images/icon-hamburger.svg";
+      src = HamburgerMenuIcon;
       alt = "open nav menu icon";
     }
     return (
@@ -20,18 +23,19 @@ const AppHeader = () => {
         src={src}
         alt={alt}
         onClick={() => setShowMobileNav(!showMobileNav)}
+        className="tablet:hidden"
       />
     );
   }
 
   return (
-    <header className="flex flex-col py-5 text-white">
-      <div className="flex items-center justify-between">
-        <h1 className="font-bold text-h2">crowdfund</h1>
-        {renderMobileOpenNavMenuIcon()}
-      </div>
-
-      {showMobileNav && <Navbar closeNavbar={() => setShowMobileNav(false)} />}
+    <header className="relative flex justify-between items-center w-full tablet:w-4/5 py-5 text-white tablet:py-10">
+      <h1 className="font-bold text-3 cursor-pointer">crowdfund</h1>
+      <Navbar
+        isHidden={!showMobileNav}
+        closeMobileNavMenu={() => setShowMobileNav(false)}
+      />
+      {mobileNavMenuIcon()}
     </header>
   );
 };
