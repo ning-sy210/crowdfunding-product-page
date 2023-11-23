@@ -50,14 +50,14 @@ const PledgeModalOption = ({
             className="flex flex-col h-12 justify-center"
           >
             <div className="flex flex-col gap-y-1 justify-between tablet:flex-row tablet:gap-x-4 tablet:justify-normal">
-              <span className="text-5 font-bold hover:cursor-pointer tablet:active:text-primary-1 tablet:text-4.5">
+              <span className="text-9 font-bold hover:cursor-pointer tablet:active:text-primary-1 tablet:text-7">
                 {reward}
               </span>
 
               {/* Min pledge amount label */}
               {isPaidOption && (
                 <span
-                  className={`text-5 font-medium text-primary-1 tablet:text-4.5${
+                  className={`text-9 font-medium text-primary-1 tablet:text-7${
                     checked ? " tablet:font-bold" : ""
                   }`}
                 >
@@ -68,8 +68,8 @@ const PledgeModalOption = ({
           </label>
         </div>
         <p
-          className="text-5 text-neutral-2 leading-6 
-          tablet:row-start-2 tablet:row-span-full tablet:col-start-2 tablet:col-span-full tablet:text-4.51 tablet:leading-7"
+          className="text-9 text-neutral-2 leading-6 
+          tablet:row-start-2 tablet:row-span-full tablet:col-start-2 tablet:col-span-full tablet:text-8 tablet:leading-7"
         >
           {desc}
         </p>
@@ -81,8 +81,8 @@ const PledgeModalOption = ({
               lowInStock ? " text-red-500" : ""
             } tablet:justify-self-end`}
           >
-            <span className="text-4 font-bold">{stock}</span>
-            <span className="text-5 text-neutral-2 leading-6">left</span>
+            <span className="text-6 font-bold">{stock}</span>
+            <span className="text-9 text-neutral-2 leading-6">left</span>
           </p>
         )}
       </section>

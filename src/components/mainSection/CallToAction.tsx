@@ -25,10 +25,10 @@ const CallToAction = ({ inventoryStock, makePledgeFor }: CallToActionProps) => {
         title="mastercraft logo"
         className="absolute top-[-28px]"
       />
-      <h2 className="px-1 font-bold leading-6 text-3 tablet:text-1.5">
+      <h2 className="px-1 font-bold leading-6 text-5 tablet:text-2">
         Mastercraft Bamboo Monitor Riser
       </h2>
-      <p className="leading-6 text-5 text-neutral-2 tablet:text-4.5">
+      <p className="leading-6 text-9 text-neutral-2 tablet:text-7">
         A beautifully handcrafted monitor stand to reduce neck and eye strain.
       </p>
 

@@ -39,13 +39,13 @@ const EnterPledgeSection = ({
     <section className="flex flex-col text-center gap-y-5 pt-6 pb-6 px-6 border-t border-slate-300 tablet:flex-row tablet:items-center tablet:justify-between">
       <label
         htmlFor="pledge input"
-        className="text-5 text-neutral-2 leading-6 tablet:text-4.51"
+        className="text-9 text-neutral-2 leading-6 tablet:text-8"
       >
         Enter your pledge
       </label>
 
       <div className="relative flex justify-between tablet:order-2">
-        <span className="absolute top-[13px] left-6 text-5 font-bold text-stone-400 cursor-pointer tablet:top-2">
+        <span className="absolute top-[13px] left-6 text-9 font-bold text-stone-400 cursor-pointer tablet:top-2">
           $
         </span>
 
@@ -56,12 +56,12 @@ const EnterPledgeSection = ({
           min={minPledgeAmount}
           onChange={(e) => handleInputChange(e.target.value)}
           onKeyDown={(e) => e.key === "Enter" && validateInput(pledgeAmount)}
-          className="border border-slate-300 rounded-full w-[43%] max-w-[100px] pl-10 pr-4 text-5 font-bold cursor-pointer outline-none focus:border-primary-1 tablet:max-w-[10rem] tablet:active:border-primary-2"
+          className="border border-slate-300 rounded-full w-[43%] max-w-[100px] pl-10 pr-4 text-9 font-bold cursor-pointer outline-none focus:border-primary-1 tablet:max-w-[10rem] tablet:active:border-primary-2"
         ></input>
         <button
           type="button"
           onClick={() => validateInput(pledgeAmount)}
-          className="bg-primary-1 text-white rounded-full w-1/2 max-w-[120px] py-[13px] text-5 font-bold transition-colors  
+          className="bg-primary-1 text-white rounded-full w-1/2 max-w-[120px] py-[13px] text-9 font-bold transition-colors  
           tablet:py-2 tablet:max-w-[10rem] tablet:hover:bg-teal-400 tablet:active:bg-primary-2"
         >
           Continue
@@ -69,7 +69,7 @@ const EnterPledgeSection = ({
       </div>
 
       {errorMessage && (
-        <div className="text-5 text-red-400 font-medium tablet:order-[1]">
+        <div className="text-9 text-red-400 font-medium tablet:order-[1]">
           {errorMessage}
         </div>
       )}

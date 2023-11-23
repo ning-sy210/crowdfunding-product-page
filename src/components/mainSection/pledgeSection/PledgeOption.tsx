@@ -25,8 +25,8 @@ const PledgeOption = ({
       } tablet:p-8`}
     >
       <section className="flex flex-col gap-y-1 tablet:flex-row tablet:justify-between tablet:items-center">
-        <h3 className="font-bold tablet:text-4">{reward}</h3>
-        <p className="font-medium text-primary-1 tablet:text-4.51">
+        <h3 className="font-bold tablet:text-6">{reward}</h3>
+        <p className="font-medium text-primary-1 tablet:text-8">
           Pledge ${minPledgeAmount.toLocaleString()} or more
         </p>
       </section>
@@ -52,7 +52,7 @@ const PledgeOption = ({
             outOfStock
               ? " bg-zinc-400"
               : " bg-primary-1 hover:bg-teal-400 active:bg-primary-2"
-          } text-white font-medium rounded-full tablet:text-4.51 transition-colors`}
+          } text-white font-medium rounded-full tablet:text-8 transition-colors`}
           disabled={outOfStock}
         >
           {outOfStock ? "Out of Stock" : "Select Reward"}

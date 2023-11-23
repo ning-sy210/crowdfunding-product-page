@@ -59,13 +59,13 @@ const PledgeModal = ({
         <div className="fixed inset-0 z-[2] h-full px-6 py-[7.5rem] overflow-auto overscroll-contain tablet:py-[11.5rem]">
           <section className="m-auto flex flex-col gap-y-6 px-card py-7 rounded-lg bg-white max-w-card tablet:px-card-tablet tablet:pb-12">
             <div className="flex items-center justify-between">
-              <h2 className="text-4 font-bold">Back this project</h2>
+              <h2 className="text-6 font-bold">Back this project</h2>
               <button type="button" onClick={closeModal}>
                 <img src={CloseModalIcon} alt="close modal icon" />
               </button>
             </div>
 
-            <p className="text-5 text-neutral-2 leading-6">
+            <p className="text-9 text-neutral-2 leading-6">
               Want to support us in bringing Mastercraft Bamboo Monitor Riser
               out in the world?
             </p>
