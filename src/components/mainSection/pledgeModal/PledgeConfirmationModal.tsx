@@ -40,7 +40,7 @@ const PledgeConfirmationModal = ({
             <button
               type="button"
               onClick={closeModal}
-              className="px-8 py-3 rounded-full text-white text-9 font-bold bg-primary-1 transition-colors hover:bg-teal-400 tablet:py-2 tablet:active:bg-primary-2"
+              className="px-8 py-3 rounded-full text-white text-9 font-bold bg-primary-1 transition-colors hover:bg-teal-400 tablet:active:bg-primary-2"
             >
               Got it!
             </button>

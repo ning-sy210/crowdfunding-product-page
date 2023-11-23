@@ -5,7 +5,6 @@ export default {
     screens: {
       mb: "375px",
       tablet: "750px",
-      dt: "1440px",
     },
     maxWidth: {
       card: "728px",
