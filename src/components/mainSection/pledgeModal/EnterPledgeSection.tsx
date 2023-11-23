@@ -45,7 +45,7 @@ const EnterPledgeSection = ({
       </label>
 
       <div className="relative flex justify-between tablet:order-2">
-        <span className="absolute top-[13px] left-6 text-9 font-bold text-stone-400 cursor-pointer tablet:top-2">
+        <span className="absolute top-[13px] left-6 text-9 font-bold text-stone-400 cursor-pointer">
           $
         </span>
 
