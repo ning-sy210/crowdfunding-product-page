@@ -52,7 +52,9 @@ const PledgeOption = ({
             outOfStock
               ? " bg-zinc-400"
               : " bg-primary-1 hover:bg-teal-400 active:bg-primary-2"
-          } text-white font-medium rounded-full tablet:text-8 transition-colors`}
+          } text-white font-medium rounded-full tablet:text-8 transition-colors${
+            outOfStock ? " cursor-not-allowed" : ""
+          }`}
           disabled={outOfStock}
         >
           {outOfStock ? "Out of Stock" : "Select Reward"}
