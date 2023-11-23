@@ -32,19 +32,30 @@ const PledgeModalOption = ({
         className="flex flex-col gap-y-5 px-6 pt-5 pb-7
         tablet:grid tablet:grid-rows-[auto_auto] tablet:grid-cols-[auto_auto_min-content] tablet:gap-x-6 tablet:gap-y-0"
       >
+        {/* Radio input + reward label row */}
         <div
           className="flex items-center gap-x-4
           tablet:grid tablet:col-span-2 tablet:grid-cols-[subgrid] tablet:gap-x-[unset]"
         >
-          {/* TODO: Change appearance of radio button */}
-          <input
-            id={`${reward} input`}
-            type="radio"
-            disabled={outOfStock}
-            checked={checked}
-            onChange={onOptionSelect}
-            className="w-6 h-6 bg-primary-1"
-          />
+          <div className="relative flex">
+            <input
+              id={`${reward} input`}
+              type="radio"
+              disabled={outOfStock}
+              checked={checked}
+              onChange={onOptionSelect}
+              className="w-6 h-6 bg-primary-1 before:w-6 before:h-6 before:absolute before:bg-white"
+            />
+            {/* Custom filled circle in the radio input */}
+            <div className="absolute top-0 w-6 h-6 flex justify-center items-center rounded-full bg-stone-50 border-[1px] border-stone-300">
+              <span
+                className={`w-3 h-3 rounded-full bg-primary-1 ${
+                  checked ? "block" : "hidden"
+                }`}
+              ></span>
+            </div>
+          </div>
+
           <label
             htmlFor={`${reward} input`}
             className="flex flex-col h-12 justify-center"
@@ -73,6 +84,8 @@ const PledgeModalOption = ({
             </div>
           </label>
         </div>
+
+        {/* Pledge reward description */}
         <p
           className="text-9 text-neutral-2 leading-6 
           tablet:row-start-2 tablet:row-span-full tablet:col-start-2 tablet:col-span-full tablet:text-8 tablet:leading-7"
