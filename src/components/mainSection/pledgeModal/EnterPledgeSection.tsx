@@ -56,7 +56,8 @@ const EnterPledgeSection = ({
           min={minPledgeAmount}
           onChange={(e) => handleInputChange(e.target.value)}
           onKeyDown={(e) => e.key === "Enter" && validateInput(pledgeAmount)}
-          className="border border-slate-300 rounded-full w-[43%] max-w-[100px] pl-10 pr-4 text-9 font-bold cursor-pointer outline-none focus:border-primary-1 tablet:max-w-[10rem] tablet:active:border-primary-2"
+          className="border border-slate-300 rounded-full w-[43%] max-w-[100px] pl-10 pr-4 text-9 font-bold cursor-pointer outline-none focus:border-primary-1
+          tablet:max-w-[10rem] tablet:active:border-primary-2 tablet:pr-2"
         ></input>
         <button
           type="button"
