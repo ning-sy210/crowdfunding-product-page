@@ -1,96 +1,242 @@
-# Frontend Mentor - Crowdfunding product page
+# Frontend Mentor - Crowdfunding Product Page
 
-![Design preview for the Crowdfunding product page coding challenge](./design/desktop-preview.jpg)
+This is my solution to the [Crowdfunding Product Page Challenge](https://www.frontendmentor.io/challenges/crowdfunding-product-page-7uvcZe7ZR) on Frontend Mentor.
 
-## Welcome! 👋
+Let me first start off by saying that when I first started this challenge, I thought it was going to be pretty straightforward. I knew there were going to be some challenges along the way, but I didn't expect myself to encounter so many obstacles and learn so much even though it is just a Junior Dev challenge (which I will talk about later down below)!
 
-Thanks for checking out this front-end coding challenge.
+And because of some of the hiccups that happened along the way, I severly underestimated the amount of time it would take me to complete this 😅
 
-[Frontend Mentor](https://www.frontendmentor.io) challenges help you improve your coding skills by building realistic projects.
+- Estimated: 2 weeks
+- Actual: 1 month
 
-**To do this challenge, you need a basic understanding of HTML, CSS and JavaScript.**
+## Table of contents
 
-## The challenge
+- [Overview](#overview)
+  - [Challenge Description](#challenge-description)
+  - [Screenshot](#screenshot)
+  - [Links](#links)
+- [My Process](#my-process)
+  - [Built with](#built-with)
+  - [What I learned](#what-i-learned)
+    - [Responsive Navigation menu](#responsive-navigation-menu)
+    - [Grid Row, Grid Column and Subgrid](#grid-row-grid-column-and-subgrid)
+    - [Overlay Scrolling](#overlay-scrolling)
+    - [Tailwind CSS](#tailwind-css)
+  - [Continued development](#continued-development)
+  - [Useful resources](#useful-resources)
+- [Author](#author)
+- [Acknowledgments](#acknowledgments)
 
-Your challenge is to build out this crowdfunding product page and get it looking as close to the design as possible.
+## Overview
 
-You can use any tools you like to help you complete the challenge. So if you've got something you'd like to practice, feel free to give it a go.
+### Challenge Description
 
-Your users should be able to:
+As the name of the challenge suggests, users should be able to:
 
-- View the optimal layout depending on their device's screen size
-- See hover states for interactive elements
+- See what the product is about
+- Bookmark the product if they are interested in it
 - Make a selection of which pledge to make
-- See an updated progress bar and total money raised based on their pledge total after confirming a pledge
+- See hover states for interactive elements
 - See the number of total backers increment by one after confirming a pledge
-- Toggle whether or not the product is bookmarked
+- See an updated progress bar and total money raised based on their pledge total after confirming a pledge
+- View the optimal layout depending on their device's screen size
 
-Want some support on the challenge? [Join our community](https://www.frontendmentor.io/community) and ask questions in the **#help** channel.
+### Screenshot
 
-## Where to find everything
+<img src='./screenshots/desktop_home_page.jpeg' alt='desktop home page' />
 
-Your task is to build out the project to the designs inside the `/design` folder. You will find both a mobile and a desktop version of the design.
+### Links
 
-The designs are in JPG static format. Using JPGs will mean that you'll need to use your best judgment for styles such as `font-size`, `padding` and `margin`.
+- Challenge URL: [https://www.frontendmentor.io/challenges/crowdfunding-product-page-7uvcZe7ZR](https://www.frontendmentor.io/challenges/crowdfunding-product-page-7uvcZe7ZR)
+- Solution URL: [https://github.com/ning-sy210/crowdfunding-product-page](https://github.com/ning-sy210/crowdfunding-product-page)
+- Live Site URL: [https://ning-sy210.github.io/crowdfunding-product-page/](https://ning-sy210.github.io/crowdfunding-product-page/)
 
-If you would like the design files (we provide Sketch & Figma versions) to inspect the design in more detail, you can [subscribe as a PRO member](https://www.frontendmentor.io/pro).
+## My Process
 
-You will find all the required assets in the `/images` folder. The assets are already optimized.
+### Built with
 
-There is also a `style-guide.md` file containing the information you'll need, such as color palette and fonts.
+- [React](https://react.dev/) (TypeScript)
+- [Tailwind CSS](https://tailwindcss.com/)
+- Flexbox
+- CSS Grid
+- Mobile-first workflow
 
-## Building your project
+### What I learned
 
-Feel free to use any workflow that you feel comfortable with. Below is a suggested process, but do not feel like you need to follow these steps:
+The biggest takeaway from this challenge has to be **the responsive design**, **Overlay Scrolling** and **Tailwind CSS**!
 
-1. Initialize your project as a public repository on [GitHub](https://github.com/). Creating a repo will make it easier to share your code with the community if you need help. If you're not sure how to do this, [have a read-through of this Try Git resource](https://try.github.io/).
-2. Configure your repository to publish your code to a web address. This will also be useful if you need some help during a challenge as you can share the URL for your project with your repo URL. There are a number of ways to do this, and we provide some recommendations below.
-3. Look through the designs to start planning out how you'll tackle the project. This step is crucial to help you think ahead for CSS classes to create reusable styles.
-4. Before adding any styles, structure your content with HTML. Writing your HTML first can help focus your attention on creating well-structured content.
-5. Write out the base styles for your project, including general content styles, such as `font-family` and `font-size`.
-6. Start adding styles to the top of the page and work down. Only move on to the next section once you're happy you've completed the area you're working on.
+#### Responsive Navigation Menu
 
-## Deploying your project
+In some of the previous easier Frontend Mentor challenges that I have done, the responsiveness did not pose as huge of a problem as it did here, since all that was required to be done (in most cases) was to simply toggle the `flex-direction` between `row` and `column` for flexboxes, or to change the minimum dimensions for items in a responsive grid layout, as in `grid-template-columns: repeat(auto-fit, minmax(100px, 1fr))` for example, and maybe do some minor tweaks to the paddings, margins etc.
 
-As mentioned above, there are many ways to host your project for free. Our recommended hosts are:
+In this challenge, having to convert the navigation menu from a `position: absolute` container that stretches across the mobile screen to an inline flex container that is aligned with the brand turned out to be less straightforward than I thought. This was roughly what I had at first:
 
-- [GitHub Pages](https://pages.github.com/)
-- [Vercel](https://vercel.com/)
-- [Netlify](https://www.netlify.com/)
+```tsx
+const header = () => {
+  const [showNav, setShowNav] = useState(false);
 
-You can host your site using one of these solutions or any of our other trusted providers. [Read more about our recommended and trusted hosts](https://medium.com/frontend-mentor/frontend-mentor-trusted-hosting-providers-bf000dfebe).
+  return (
+    <header>
+      <h1 className="brand">crowdfund</h1>
+      <div
+        className="hamburger-icon"
+        onClick={() => setShowNav((prev) => !prev)}
+      ></div>
+      {showNav && <nav className="navbar"></nav>} {/* details omitted for brevity */}
+    </header>
+  );
+};
+```
 
-## Create a custom `README.md`
+```css
+header {
+  position: relative;
 
-We strongly recommend overwriting this `README.md` with a custom one. We've provided a template inside the [`README-template.md`](./README-template.md) file in this starter code.
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 
-The template provides a guide for what to add. A custom `README` will help you explain your project and reflect on your learnings. Please feel free to edit our template as much as you like.
+.navbar {
+  position: absolute;
+  width: 100%;
+}
 
-Once you've added your information to the template, delete this file and rename the `README-template.md` file to `README.md`. That will make it show up as your repository's README file.
+@media screen and (min-width: 768px) {
+  .hamburger-icon {
+    display: none;
+  }
 
-## Submitting your solution
+  .navbar {
+    position: static;
+    width: auto;
+  }
+}
+```
 
-Submit your solution on the platform for the rest of the community to see. Follow our ["Complete guide to submitting solutions"](https://medium.com/frontend-mentor/a-complete-guide-to-submitting-solutions-on-frontend-mentor-ac6384162248) for tips on how to do this.
+Which works in mobile view! But when switched to desktop view, things start to break because there exists no `.hamburger-icon` to toggle `setShowNav` to `true`, which means there won't ever appear a navigation bar!
 
-Remember, if you're looking for feedback on your solution, be sure to ask questions when submitting it. The more specific and detailed you are with your questions, the higher the chance you'll get valuable feedback from the community.
+To ensure the desktop view works, using `showNav` to directly control whether the navbar is rendered probably wasn't a good idea. The workaround I found was to use CSS to control whether the navbar is rendered instead. And so, this is what I ended up with:
 
-## Sharing your solution
+```tsx
+const header = () => {
+  const [showNav, setShowNav] = useState(false);
 
-There are multiple places you can share your solution:
+  return (
+    <header>
+      <h1 className="brand">crowdfund</h1>
+      <div
+        className="hamburger-icon"
+        onClick={() => setShowNav((prev) => !prev)}
+      ></div>
+      {/* changed here! */}
+      <nav className={`${showNav ? "hidden" : ""} navbar`}></nav>{" "}
+    </header>
+  );
+};
+```
 
-1. Share your solution page in the **#finished-projects** channel of the [community](https://www.frontendmentor.io/community).
-2. Tweet [@frontendmentor](https://twitter.com/frontendmentor) and mention **@frontendmentor**, including the repo and live URLs in the tweet. We'd love to take a look at what you've built and help share it around.
-3. Share your solution on other social channels like LinkedIn.
-4. Blog about your experience building your project. Writing about your workflow, technical choices, and talking through your code is a brilliant way to reinforce what you've learned. Great platforms to write on are [dev.to](https://dev.to/), [Hashnode](https://hashnode.com/), and [CodeNewbie](https://community.codenewbie.org/).
+```css
+// <--- newly added --->
+// Specificity: (0, 1, 0)
+.hidden {
+  display: none;
+}
 
-We provide templates to help you share your solution once you've submitted it on the platform. Please do edit them and include specific questions when you're looking for feedback.
+header {
+  position: relative;
 
-The more specific you are with your questions the more likely it is that another member of the community will give you feedback.
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 
-## Got feedback for us?
+.navbar {
+  position: absolute;
+  width: 100%;
+}
 
-We love receiving feedback! We're always looking to improve our challenges and our platform. So if you have anything you'd like to mention, please email hi[at]frontendmentor[dot]io.
+@media screen and (min-width: 768px) {
+  .hamburger-icon {
+    display: none;
+  }
 
-This challenge is completely free. Please share it with anyone who will find it useful for practice.
+  // Specificity: (0, 1, 0)
+  .navbar {
+    display: flex; // <--- newly added --->
+    position: static;
+    width: auto;
+  }
+}
+```
 
-**Have fun building!** 🚀
+With the above solution, when in mobile view, whether the navbar appears is controlled by the `.hidden` class. And in desktop view, the navbar will have a `display: flex` property and this will not be overridden regardless of `showNav` being `true` or `false`, as the `.navbar` (media-query) class is futher down the CSS file compared to the `.hidden` class and both classes have the same specificity.
+
+#### Grid Row, Grid Column and Subgrid
+
+The second responsive design obstacle that I encountered was that of the `<PledgeModalOption />` component where I had to position elements differently to achieve the varied look in mobile and desktop view.
+
+&emsp;**Desktop View**
+
+&emsp;<img src='./screenshots/desktop_pledge_modal_option.jpg' alt='desktop pledge modal option' width='400' />
+
+&emsp;**Mobile View**
+
+&emsp;<img src='./screenshots/mobile_pledge_modal_option.jpg' alt='mobile pledge modal option' height='280' />
+
+To be honest, when I first noticed the difference between the mobile and desktop designs, I was stumped. I was so accustomed to elements being in order across different views that I couldn't think of a way to achieve the look on the spot.
+
+Fortunately, I stumbled upon Kevin Powell's YouTube [video](https://www.youtube.com/watch?v=Zddz_R1RnfM&pp=ygUHc3ViZ3JpZA%3D%3D) on subgrids and it made me realize how powerful they are and their pertinence to this problem I was facing. And thus, the solution I ended up using for the desktop view is a combination of:
+
+- `display: grid` on the parent element
+- `grid-template-columns: subgrid` to achieve consistent spacing between sibling elements
+- `grid-row` and `grid-column` on the child elements to position them in the parent grid
+
+#### Overlay Scrolling
+
+<img src='./screenshots/desktop_double_scrollbar.jpg' alt="double scrollbar">
+
+<br/>
+
+Oh god, this was a major headache.
+
+Even after completing this project, I still could not find a way to get rid of the double scrollbar. I could set `overflow: hidden` for the background element when the modal appears but doing so will cause the background to "jump" to the top when it should remain in place. When I weighed UI annoyance against a more jarring UX, I decided that having two scollbars is more acceptable.
+
+#### Tailwind CSS
+
+This is the first project in which I have used Tailwind. For all my past projects (work or personal), I have always used SASS mainly for the fact that it provides access to imperative-programming-like syntax for CSS (e.g. loops). SASS also provides the ability to nest CSS classes, of which was later introduced as part of Vanilla CSS in March 2023.
+
+As someone who uses SASS predominantly, when I first discovered Tailwind, I immediately thought this was something I was never going to use. To me, Tailwind was just another form of inline styling which I thought was really ugly to write, read and maintain. But I didn't want to be one of those that denounce Tailwind without first trying it out, so I thought this project will be a good chance for me to assess whether Tailwind is able to live up to its hype.
+
+And...
+
+Let's just say I am still on the fence. As I would consider myself to be quite OCD, I still stand true to my belief that Tailwind is just not as pretty to read and write as compared to traditional ways of CSS. Having to read and write horizontally through lines of shortened CSS property and values is something that I still do not find joy in. What makes things worse is when I have to deal with writing media queries with multiple properties and values that need to be overridden, which was the case for this project.
+
+But!
+
+I definitely appreciate the ability to do away with writing class names because coming up with them can be a really huge pain in the rear sometimes. Also, the tailwind config file is really handy for declaring the project themes and styles in one central place, all while keeping things intuitive for the developer. So I really want to give props to Tailwind for that.
+
+Overall, I would say I definitely think of Tailwind in a more positive light now. I can see its appeal and why it has the support of a large community of people. As for whether it will become my main CSS framework from here on out is a consideration for another day. At the moment I am still leaning away from Tailwind, but I don't think it is fair to base that verdict off the experience of using it in just one project alone.
+
+### Continued development
+
+Even though I had some experiences with these in this project, these are the concepts that I would like to work on more since I found myself to be still quite weak in them.
+
+- CSS Grid and Subgrid
+- `width: 100%` vs `width: auto`
+- overlays (`position: fixed` and `position: absolute`)
+- `::before` and `::after` pseudo-selectors
+
+Things I would like to explore in my future projects:
+
+- Jotai (React State Management)
+- `:is` and `:has` pseudo classes
+
+### Useful resources
+
+- [Developer Mozilla](https://developer.mozilla.org/en-US/docs/Web/CSS) - CSS documentation
+- [Tailwind CSS CheatSheet](https://tailwindcomponents.com/cheatsheet/) - Quick lookup to see the class name for the corresponding CSS property and value
+
+## Acknowledgments
+
+- Kevin Powell and his [YouTube Channel](https://www.youtube.com/@KevinPowell)
