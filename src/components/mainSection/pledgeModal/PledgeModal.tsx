@@ -47,7 +47,7 @@ const PledgeModal = ({
   }
 
   return (
-    <div className="text-start">
+    <>
       <div className="fixed inset-0 bg-neutral-1 opacity-50 z-[1]"></div>
 
       {showConfirmationModal ? (
@@ -89,7 +89,7 @@ const PledgeModal = ({
           </section>
         </div>
       )}
-    </div>
+    </>
   );
 };
 
