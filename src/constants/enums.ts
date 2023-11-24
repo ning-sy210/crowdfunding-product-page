@@ -24,7 +24,7 @@ export const paidPledgeOptions: PledgeOptionProps[] = [
     reward: PledgeRewards.MAHOGANY,
     minPledgeAmount: 200,
     desc: "You get two Special Edition Mahogany stands, a Backer T-Shirt, and a personal thank you. You'll be added to our Backer member list. Shipping is included.",
-    stock: 0,
+    stock: 1,
   },
 ];
 
