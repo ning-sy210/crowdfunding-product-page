@@ -69,7 +69,7 @@ The biggest takeaway from this challenge has to be **the responsive design**, **
 
 In some of the previous easier Frontend Mentor challenges that I have done, the responsiveness did not pose as huge of a problem as it did here, since all that was required to be done (in most cases) was to simply toggle the `flex-direction` between `row` and `column` for flexboxes, or to change the minimum dimensions for items in a responsive grid layout, as in `grid-template-columns: repeat(auto-fit, minmax(100px, 1fr))` for example, and maybe do some minor tweaks to the paddings, margins etc.
 
-In this challenge, having to convert the navigation menu from a `position: absolute` container that stretches across the mobile screen to an inline flex container that is aligned with the brand turned out to be less straightforward than I thought. This was roughly what I had at first:
+In this challenge, having to convert the navigation menu from a `position: absolute` container that stretches across the mobile screen to an inline flex container that is aligned with the brand turned out to be less straightforward than I thought. This was roughly what I had at first when I was building out the mobile view:
 
 ```tsx
 const header = () => {
@@ -130,7 +130,7 @@ const header = () => {
         onClick={() => setShowNav((prev) => !prev)}
       ></div>
       {/* changed here! */}
-      <nav className={`${showNav ? "hidden" : ""} navbar`}></nav>{" "}
+      <nav className={`${showNav ? "hidden" : ""} navbar`}></nav>
     </header>
   );
 };
